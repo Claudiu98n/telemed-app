@@ -6,3 +6,15 @@
 .Telemed-App {
     min-height: 100vh;
 }
+
+.btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #CEC041 !important;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem #CEC041 !important;
+}
+
+.btn.focus, .btn:focus {
+    box-shadow: 0 0 0 0.2rem #CEC041 !important;
+}

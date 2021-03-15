@@ -1,7 +1,14 @@
 @import '../../Telemed-template/base/vars';
 
+
 .sign-in-page {
     min-height: 100vh;
+
+    .logo-telemed {
+        height: auto;
+        width: 100%;
+        max-width: 200px;
+    }
 
     .sign-in-box {
         box-shadow: $custom-shadow;
@@ -18,6 +25,16 @@
             background-color: $color-purple;
 
             .login-form-container {
+                .group-input {
+                    border: none;
+                    .rs-input-group-addon {
+                        background-color: $color-yellow;
+                        & > svg {
+                            color: $color-white;
+                        }
+                    }
+                }
+
                 & > Input {
                     width: 100%;
                 }
@@ -71,5 +88,11 @@
                 }
             }
         }
+    }
+}
+
+@media screen and (min-width: 1800px) {
+    .sign-in-page {
+        justify-content: center;
     }
 }
