@@ -1,7 +1,7 @@
 @import '../../Telemed-template/base/vars';
 
 
-.sign-in-page {
+.sign-up-page {
     min-height: 100vh;
 
     .logo-telemed {
@@ -10,13 +10,13 @@
         max-width: 200px;
     }
 
-    .sign-in-box {
+    .sign-up-box {
         box-shadow: $custom-shadow;
         border-radius: 15px;
         overflow: hidden;
         perspective: 1px;
 
-        .left-side-sign-in {
+        .left-side-sign-up {
             .left-side-image {
                 width: 100%;
                 max-width: 600px;
@@ -24,7 +24,7 @@
             }
         }
     
-        .right-side-sign-in {
+        .right-side-sign-up {
             background-color: $color-purple;
 
             .login-form-container {
@@ -49,12 +49,12 @@
 // Responsive design
 
 @media screen and (max-width: 767px) {
-    .sign-in-page {
-        .sign-in-box {
-            flex-direction: column;
-            height: 500px;
+    .sign-up-page {
+        .sign-up-box {
+            flex-direction: column !important;
+            height: 600px;
 
-            .left-side-sign-in {
+            .left-side-sign-up {
                 width: 100% !important;
                 height: 50%;
 
@@ -63,7 +63,7 @@
                 }
             }
 
-            .right-side-sign-in {
+            .right-side-sign-up {
                 width: 100% !important;
                 height: 50%;
             }
@@ -73,9 +73,9 @@
 
 
 @media screen and (max-width: 400px) {
-    .sign-in-page {
-        .sign-in-box {
-            .right-side-sign-in {
+    .sign-up-page {
+        .sign-up-box {
+            .right-side-sign-up {
                 padding: 0px !important;
 
                 .login-form-container {
@@ -95,7 +95,7 @@
 }
 
 @media screen and (min-width: 1800px) {
-    .sign-in-page {
+    .sign-up-page {
         justify-content: center;
     }
 }

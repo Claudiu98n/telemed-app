@@ -13,6 +13,8 @@ import "./App.scss";
 // import Error404 from "./Pages/error404/Error404";
 
 const SignIn = lazy(() => import("./Pages/SignIn/SignIn"));
+const SignUp = lazy(() => import("./Pages/SignUp/SignUp"));
+
 // const SinglePost = lazy(() => import("./Pages/SinglePost/SinglePostPage"));
 
 class App extends Component {
@@ -25,8 +27,8 @@ class App extends Component {
             fallback={
               <Loader
                 className="loader"
-                type="Circles"
-                color="#00BFFF"
+                type="Bars"
+                color="#962DAF"
                 height={80}
                 width={80}
                 timeout={3000}
@@ -42,6 +44,7 @@ class App extends Component {
             <ToastContainer />
             <Switch>
               <Route path="/" exact component={SignIn}></Route>
+              <Route path="/creeaza-cont" exact component={SignUp}></Route>
             </Switch>
           </Suspense>
           {/* <Footer /> */}
