@@ -11,6 +11,9 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { AiTwotoneMail } from 'react-icons/ai';
 // react-reveal
 import Slide from 'react-reveal/Slide';
+// toast + axios
+import { toast } from "react-toastify";
+import axios from "axios";
 
 class SignIn extends Component {
     constructor() {
@@ -21,8 +24,44 @@ class SignIn extends Component {
         }
     }
 
-    componentDidMount = () => {
+    login = async () => {
+        if (this.state.email === "" || this.state.password === "") {
+            toast.error("Ati lasat campurile necompletate");
+            return;
+        }
 
+        let obj = {
+            identifier: this.state.email,
+            password: this.state.password,
+        }; 
+
+        try {
+            let response = await axios.post(
+              "http://localhost:1337/auth/local",
+              obj
+            );
+            console.log(response);
+      
+            if (response.status === 200) {
+              localStorage.setItem("jwt", response.data.jwt);
+              // localStorage.setItem('id', response.data.user.id);
+      
+              console.log(response.data);
+      
+              // if ( response.data.user.isProfesor === true )
+              this.props.history.push("/dashboard");
+            }
+            toast.success("Te-ai conectat cu succes la cont");
+          } catch (e) {
+            switch (e.response.status) {
+              case 400:
+                toast.error("Email sau parola gresita");
+                break;
+              default:
+                toast.error("S-a produs o eroare la logare");
+                break;
+            }
+          }
     }
 
     handleChange = (value, event) => {
@@ -68,7 +107,7 @@ class SignIn extends Component {
                                 </InputGroup>        
                                     <div className="login-form-buttons-container mt-5 d-flex justify-content-center">
                                         <Button variant="primary" className="btn-primary" onClick={() => this.props.history.push('/Creeaza-Cont')}>Creează cont</Button>
-                                        <Button variant="outline-primary" className="btn-outline-primary ml-3">Autentificare</Button>
+                                        <Button variant="outline-primary" className="btn-outline-primary ml-3" onClick={this.login}>Autentificare</Button>
                                     </div>
                                 </div>
                             </div>

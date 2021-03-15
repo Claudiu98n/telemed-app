@@ -8,21 +8,19 @@ import {
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
 import "./App.scss";
-// import Footer from "./Common/Footer/Footer";
-// import Navbar from "./Common/Navigation/Navbar";
-// import Error404 from "./Pages/error404/Error404";
 
 const SignIn = lazy(() => import("./Pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("./Pages/SignUp/SignUp"));
+const Dashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
 
-// const SinglePost = lazy(() => import("./Pages/SinglePost/SinglePostPage"));
+// import Error404 from "./Pages/error404/Error404";
+
 
 class App extends Component {
   render() {
     return (
       <div className="Telemed-App">
         <Router>
-          {/* <Navbar /> */}
           <Suspense
             fallback={
               <Loader
@@ -43,11 +41,11 @@ class App extends Component {
           >
             <ToastContainer />
             <Switch>
-              <Route path="/" exact component={SignIn}></Route>
-              <Route path="/creeaza-cont" exact component={SignUp}></Route>
+              <Route path="/" exact component={SignIn} />
+              <Route path="/creeaza-cont" exact component={SignUp} />
+              <Route path="/dashboard" exact component={Dashboard} />
             </Switch>
           </Suspense>
-          {/* <Footer /> */}
         </Router>
       </div>
     );
