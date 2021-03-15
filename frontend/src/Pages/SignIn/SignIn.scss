@@ -1,0 +1,75 @@
+@import '../../Telemed-template/base/vars';
+
+.sign-in-page {
+    min-height: 100vh;
+
+    .sign-in-box {
+        box-shadow: $custom-shadow;
+
+        .left-side-sign-in {
+            .left-side-image {
+                width: 100%;
+                max-width: 600px;
+                height: auto;
+            }
+        }
+    
+        .right-side-sign-in {
+            background-color: $color-purple;
+
+            .login-form-container {
+                & > Input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+// Responsive design
+
+@media screen and (max-width: 767px) {
+    .sign-in-page {
+        .sign-in-box {
+            flex-direction: column;
+            height: 500px;
+
+            .left-side-sign-in {
+                width: 100% !important;
+                height: 50%;
+
+                .left-side-image {
+                    max-width: 300px;
+                }
+            }
+
+            .right-side-sign-in {
+                width: 100% !important;
+                height: 50%;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 360px) {
+    .sign-in-page {
+        .sign-in-box {
+            .right-side-sign-in {
+                padding: 20px !important;
+
+                .login-form-container {
+                    Input {
+                        font-size: 12px;
+                    }
+
+                    .login-form-buttons-container {
+                        Button {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

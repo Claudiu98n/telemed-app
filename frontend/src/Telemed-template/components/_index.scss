@@ -1,0 +1,97 @@
+@import "../base/vars";
+@import "../base/helpers";
+
+//Buttons
+
+.btn-primary {
+  @extend .font-nunito-regular;
+  background-image: linear-gradient($color-yellow, $color-yellow-secondary) !important;
+  color: $color-white !important;
+  border: none !important;
+  border-radius: 30px !important;
+  padding: 6px 14px !important;
+
+  &:hover {
+    background-image: linear-gradient($color-yellow-secondary, $color-yellow) !important;
+  }
+}
+
+.btn-outline-primary {
+  @extend .font-nunito-regular;
+  background-color: transparent !important;
+  border: none !important;
+  border: 1px solid $color-yellow !important;
+  border-radius: 30px !important;
+  color: $color-white !important;
+  padding: 6px 14px !important;
+  outline: none !important;
+
+  &:hover {
+    background-color: $color-yellow !important;
+    color: $color-white !important;
+  }
+}
+
+// Special color fonts
+
+.font-color-faded {
+  color: $color-faded-lightgray !important;
+}
+
+.font-color-white {
+  color: $color-white !important;
+}
+
+
+.font-size-24 {
+  font-size: 24px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.font-size-40 {
+  font-size: 40px;
+}
+
+//font-size-14
+@media screen and (max-width: 767px) {
+  .font-size-14 {
+    font-size: 12px;
+  }
+}
+
+//font-size-40
+@media screen and (max-width: 991px) {
+  .font-size-40 {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .font-size-40 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .font-size-40 {
+    font-size: 16px;
+  }
+}
+
+
+//font-size-20
+
+@media screen and (max-width: 991px) {
+  .font-size-24 {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .font-size-24 {
+    font-size: 16px;
+  }
+}

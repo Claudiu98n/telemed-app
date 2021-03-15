@@ -1,0 +1,74 @@
+@import './vars';
+
+// font size
+$min_width: 280px;
+$max_width: 1200px;
+$min_font: 14px;
+$max_font: 16px;
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} *
+            ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+// Font Families
+
+@font-face {
+  font-family: 'nunito-bold';
+  src: url('../font/Nunito/Nunito-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'nunito-light';
+  src: url('../font/Nunito/Nunito-Light.ttf');
+}
+
+@font-face {
+  font-family: 'nunito-regular';
+  src: url('../font/Nunito/Nunito-Regular.ttf');
+}
+
+// // Classes to set fonts
+.font-nunito-bold {
+  font-family: nunito-bold !important;
+}
+
+.font-nunito-light {
+  font-family: nunito-light !important;
+}
+
+.font-nunito-regular {
+  font-family: nunito-regular !important;
+}
+
+.font-nunito-bold-green-uppercase {
+  font-family: nunito-bold !important;
+  color: $color-green !important;
+  text-transform: uppercase !important;
+}
+
+.font-nunito-regular-blue {
+  font-family: nunito-regular !important;
+  color: $color-blue !important;
+}

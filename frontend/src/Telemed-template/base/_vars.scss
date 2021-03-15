@@ -1,0 +1,34 @@
+// Colors
+
+$color-green: #00bfa5 !default;
+$color-blue: #03a9f4 !default;
+$color-yellow: #afa22d !default;
+$color-yellow-secondary: #968e45 !default;
+$color-red: #f97878 !default;
+$color-purple: #962DAF !default;
+$color-green-light: #d9f6f2 !default;
+$color-blue-light: #daf2fd !default;
+$dark-color: #49566d !default;
+$color-white: #fff !default;
+$border-color: #e7e7e7 !default;
+$color-lightgray: #f5f6fa !default;
+$color-faded-lightgray: #b6b5b5 !default;
+
+// line-height
+$paragraph-line-height: 1.7;
+
+//box-shadow
+$custom-shadow: 5px 4px 8px 14px rgba(0, 0, 0, 0.2);
+
+// Background gradients
+@mixin bg-gradient-1 {
+  background-image: linear-gradient($color-green-light, $color-blue-light);
+}
+
+// Social colors
+
+$color-instagram: #e4405f;
+$color-twitter: #55acee;
+$color-pinterest: #bd081c;
+$color-facebook: #3b5999;
+$color-youtube: #cd201f;
