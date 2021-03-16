@@ -1,6 +1,7 @@
 @import '../../Telemed-template/base/vars';
 
 .select-type-page {
+    min-height: 100vh;
     .select-type-box {
         .select-container {
             border: 1px solid $color-purple;
@@ -15,5 +16,13 @@
                 border-bottom: 1px solid $color-purple;
             }
         }
+    }
+}
+
+// responsive design
+
+@media screen and (min-width: 2000px) {
+    .select-type-page {
+        justify-content: center;
     }
 }

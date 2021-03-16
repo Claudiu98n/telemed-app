@@ -13,7 +13,7 @@ const SignIn = lazy(() => import("./Onboarding/SignIn/SignIn"));
 const SignUp = lazy(() => import("./Onboarding/SignUp/SignUp"));
 const ResetPassword = lazy(() => import("./Onboarding/ResetPassword/ResetPassword"));
 const SelectType = lazy(() => import("./Onboarding/SelectType/SelectType"));
-const Dashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
+const DoctorDashboard = lazy(() => import("./DoctorPages/DoctorDashboard/DoctorDashboard"));
 
 // import Error404 from "./Pages/error404/Error404";
 
@@ -47,7 +47,7 @@ class App extends Component {
               <Route path="/creeaza-cont" exact component={SignUp} />
               <Route path="/reseteaza-parola" exact component={ResetPassword} />
               <Route path="/selecteaza-tipul" exact component={SelectType} />
-              <Route path="/dashboard" exact component={Dashboard} />
+              <Route path="/doctor-dashboard" exact component={DoctorDashboard} />
             </Switch>
           </Suspense>
         </Router>
