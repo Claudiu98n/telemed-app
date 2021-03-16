@@ -14,6 +14,7 @@ const SignUp = lazy(() => import("./Onboarding/SignUp/SignUp"));
 const ResetPassword = lazy(() => import("./Onboarding/ResetPassword/ResetPassword"));
 const SelectType = lazy(() => import("./Onboarding/SelectType/SelectType"));
 const DoctorDashboard = lazy(() => import("./DoctorPages/DoctorDashboard/DoctorDashboard"));
+const PacientDashboard = lazy(() => import("./PacientPages/PacientDashboard/PacientDashboard"));
 
 // import Error404 from "./Pages/error404/Error404";
 
@@ -48,6 +49,7 @@ class App extends Component {
               <Route path="/reseteaza-parola" exact component={ResetPassword} />
               <Route path="/selecteaza-tipul" exact component={SelectType} />
               <Route path="/doctor-dashboard" exact component={DoctorDashboard} />
+              <Route path="/pacient-dashboard" exact component={PacientDashboard} />
             </Switch>
           </Suspense>
         </Router>

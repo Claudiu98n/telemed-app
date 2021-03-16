@@ -4,7 +4,7 @@ class DoctorDashboard extends Component {
     render() {
         return (
             <div>
-                okok
+                doctor
             </div>
         )
     }

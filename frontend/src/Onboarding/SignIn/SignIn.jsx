@@ -44,12 +44,14 @@ class SignIn extends Component {
       
             if (response.status === 200) {
               localStorage.setItem("jwt", response.data.jwt);
+              localStorage.setItem("userType", response.data.user.role.type);
+
               // localStorage.setItem('id', response.data.user.id);
       
               console.log(response.data);
-      
+
               // if ( response.data.user.isProfesor === true )
-              this.props.history.push("/dashboard");
+              this.props.history.push(`/${response.data.user.role.type}-dashboard`);
             }
             toast.success("Te-ai conectat cu succes la cont");
           } catch (e) {
