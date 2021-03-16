@@ -9,8 +9,10 @@ import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
 import "./App.scss";
 
-const SignIn = lazy(() => import("./Pages/SignIn/SignIn"));
-const SignUp = lazy(() => import("./Pages/SignUp/SignUp"));
+const SignIn = lazy(() => import("./Onboarding/SignIn/SignIn"));
+const SignUp = lazy(() => import("./Onboarding/SignUp/SignUp"));
+const ResetPassword = lazy(() => import("./Onboarding/ResetPassword/ResetPassword"));
+const SelectType = lazy(() => import("./Onboarding/SelectType/SelectType"));
 const Dashboard = lazy(() => import("./Pages/Dashboard/Dashboard"));
 
 // import Error404 from "./Pages/error404/Error404";
@@ -43,6 +45,8 @@ class App extends Component {
             <Switch>
               <Route path="/" exact component={SignIn} />
               <Route path="/creeaza-cont" exact component={SignUp} />
+              <Route path="/reseteaza-parola" exact component={ResetPassword} />
+              <Route path="/selecteaza-tipul" exact component={SelectType} />
               <Route path="/dashboard" exact component={Dashboard} />
             </Switch>
           </Suspense>

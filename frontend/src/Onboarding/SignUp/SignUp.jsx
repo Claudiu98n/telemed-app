@@ -45,7 +45,7 @@ class SignUp extends Component {
                             </div>
                             <div className="right-side-sign-up w-50 p-5 p-md-4 d-flex flex-column justify-content-center align-items-center">
                                 <p className="font-nunito-bold font-color-white font-size-40">Creează un cont!</p>
-                                <div className="login-form-container">
+                                <div className="sign-up-form-container">
                                 <InputGroup className="group-input">
                                     <InputGroup.Addon>
                                         <AiTwotoneMail />
@@ -79,8 +79,8 @@ class SignUp extends Component {
                                         onChange={this.handleChange}
                                     />
                                 </InputGroup>              
-                                    <div className="login-form-buttons-container mt-5 d-flex justify-content-center">
-                                        <Button variant="primary" className="btn-primary" onClick={() => this.props.history.push('/Creeaza-Cont')}>Creează cont</Button>
+                                    <div className="sign-up-form-buttons-container mt-5 d-flex justify-content-center">
+                                        <Button variant="primary" className="btn-primary" onClick={() => this.props.history.push('/creeaza-cont')}>Creează cont</Button>
                                         <Button variant="outline-primary" className="btn-outline-primary ml-3" onClick={() => this.props.history.push('/')}>Autentificare</Button>
                                     </div>
                                 </div>

@@ -104,9 +104,10 @@ class SignIn extends Component {
                                         placeholder="Parola"
                                         onChange={this.handleChange}
                                     />
-                                </InputGroup>        
+                                </InputGroup>  
+                                <p className="reset-password font-color-white font-size-14 mt-1" onClick={() => this.props.history.push('/reseteaza-parola')}>Resetează parola</p>      
                                     <div className="login-form-buttons-container mt-5 d-flex justify-content-center">
-                                        <Button variant="primary" className="btn-primary" onClick={() => this.props.history.push('/Creeaza-Cont')}>Creează cont</Button>
+                                        <Button variant="primary" className="btn-primary" onClick={() => this.props.history.push('/creeaza-cont')}>Creează cont</Button>
                                         <Button variant="outline-primary" className="btn-outline-primary ml-3" onClick={this.login}>Autentificare</Button>
                                     </div>
                                 </div>
