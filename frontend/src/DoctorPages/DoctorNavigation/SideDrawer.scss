@@ -1,6 +1,7 @@
 @import "../../Telemed-template/base/vars";
 
 .side-drawer {
+  position: relative;
   height: 100%;
   background-color: $color-white;
   box-shadow: $custom-shadow;
@@ -12,6 +13,17 @@
   z-index: 200;
   transform: translateX(-1000px);
   transition: transform 0.3s ease-out;
+
+  .logout-container {
+    position: absolute;
+    left: 1.4rem;
+    bottom: 4rem;
+    cursor: pointer;
+    
+    .logout-icon {
+      font-size: 40px;
+    }
+  }
 
   .side-drawer-logo {
     padding-top: 0;
@@ -45,7 +57,7 @@
     p {
       display: flex;
       justify-content: center;
-      margin-top: 7px;
+      margin-top: 15px;
       padding-left: 10px;
       color: $dark-color;
       font-weight: bold;
@@ -60,13 +72,13 @@
       height: 60px;
       border-radius: 50%;
       color: $dark-color;
-      background-color: lighten($color-blue, 46%);
+      background-color: lighten($color-purple, 46%);
       margin-top: 10px;
       font-size: 26px;
     }
 
     .active-icon {
-      color: $color-blue;
+      color: $color-purple;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -74,14 +86,13 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background-color: lighten($color-blue, 42%);
+      background-color: lighten($color-purple, 42%);
       margin-top: 10px;
       font-size: 26px;
     }
 
     .active-description-icon {
-      color: $color-blue !important;
-      // font-weight: bold;
+      color: $color-purple !important;
     }
   }
 }

@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 // style
 import './SideDrawer.scss';
 // components
-import { Icon } from "rsuite";
 import Logo from '../../Assets/Icons/logo-telemed.png';
 import {CgClose} from 'react-icons/cg';
+import {IoLogOutSharp} from 'react-icons/io5';
+import {IoIosPeople} from 'react-icons/io';
+import {GiVideoConference} from 'react-icons/gi';
+import {RiHomeSmileFill} from 'react-icons/ri';
 
 const SideDrawer = (props) => {
     return (
@@ -18,21 +21,41 @@ const SideDrawer = (props) => {
               className="menu-item"
               onClick={() => {
                 props.close();
+                props.setSelectedPage("DoctorHomePage");
+              }}
+            >
+              <RiHomeSmileFill
+                className={
+                  props.highlightDoctorHomepage ? "active-icon" : "icon"
+                }
+              />
+              <p
+                className={
+                 `font-nunito-bold ${props.highlightDoctorHomepage && "active-description-icon"}`
+                }
+              >
+                Acasă
+              </p>
+            </div>  
+
+            <div
+              className="menu-item"
+              onClick={() => {
+                props.close();
                 props.setSelectedPage("Meeting");
               }}
             >
-              {/* <Icon
+              <GiVideoConference
                 className={
-                  props.highlightCalendarIcon ? "active-icon" : "icon"
+                  props.highlightMeeting ? "active-icon" : "icon"
                 }
-                icon="calendar"
-              /> */}
+              />
               <p
-                // className={
-                //   props.highlightCalendarIcon && "active-description-icon"
-                // }
+                className={
+                  props.highlightMeeting && "active-description-icon"
+                }
               >
-                Meeting
+                Consult
               </p>
             </div>
             
@@ -43,19 +66,22 @@ const SideDrawer = (props) => {
                 props.setSelectedPage("PacientsList");
               }}
             >
-              {/* <Icon
+              <IoIosPeople
                 className={
-                  props.highlightAcasaIcon ? "active-icon" : "icon"
+                  props.highlightPacientsList ? "active-icon" : "icon"
                 }
-                icon="home"
-              /> */}
+              />
               <p
-                // className={
-                //  `font-nunito-bold ${props.highlightAcasaIcon && "active-description-icon"}`
-                // }
+                className={
+                 `font-nunito-bold ${props.highlightPacientsList && "active-description-icon"}`
+                }
               >
-                Lista Pacienților
+                Pacienți
               </p>
+            </div>    
+            <div className="logout-container d-flex align-items-center">
+                <IoLogOutSharp className="logout-icon" onClick={props.logout} />
+                <span className="ml-1 font-nunito-bold">Delogare</span>
             </div>
           </div>
       </nav>

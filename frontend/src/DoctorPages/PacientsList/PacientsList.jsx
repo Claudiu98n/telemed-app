@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 class PacientsList extends Component {
     render() {
         return (
-            <div>
-                pacientsList
+            <div className="d-flex justify-content-center align-items-center">
+                ok
             </div>
         )
     }

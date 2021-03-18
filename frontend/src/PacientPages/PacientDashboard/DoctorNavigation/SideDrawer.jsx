@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 // style
 import './SideDrawer.scss';
 // components
-import { Icon } from "rsuite";
 import Logo from '../../Assets/Icons/logo-telemed.png';
 import {CgClose} from 'react-icons/cg';
 
