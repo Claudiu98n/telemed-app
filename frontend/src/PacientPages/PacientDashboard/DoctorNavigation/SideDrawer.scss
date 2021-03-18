@@ -1,0 +1,115 @@
+@import "../../Telemed-template/base/vars";
+
+.side-drawer {
+  height: 100%;
+  background-color: $color-white;
+  box-shadow: $custom-shadow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 70%;
+  max-width: 300px;
+  z-index: 200;
+  transform: translateX(-1000px);
+  transition: transform 0.3s ease-out;
+
+  .side-drawer-logo {
+    padding-top: 0;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+
+  .side-drawer-close {
+    font-size: 1.1rem;
+    cursor: pointer;
+  }
+
+  #side-drawer-search-input {
+    display: none;
+  }
+
+  .menu-item:focus {
+    outline: none;
+  }
+  .menu-item p:hover {
+    color: $color-purple;
+  }
+  .menu-item {
+    width: 100%;
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+
+    p {
+      display: flex;
+      justify-content: center;
+      margin-top: 7px;
+      padding-left: 10px;
+      color: $dark-color;
+      font-weight: bold;
+    }
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      color: $dark-color;
+      background-color: lighten($color-blue, 46%);
+      margin-top: 10px;
+      font-size: 26px;
+    }
+
+    .active-icon {
+      color: $color-blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: lighten($color-blue, 42%);
+      margin-top: 10px;
+      font-size: 26px;
+    }
+
+    .active-description-icon {
+      color: $color-blue !important;
+      // font-weight: bold;
+    }
+  }
+}
+
+.side-drawer.open {
+  transform: translateX(0);
+}
+
+// media queries
+@media screen and (max-width: 679px) {
+  .side-drawer {
+    #side-drawer-search-input {
+      display: block;
+      border: none;
+      border: 1px solid $color-blue;
+      outline: none;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .side-drawer {
+    .menu-item {
+      .icon,
+      .active-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+}
