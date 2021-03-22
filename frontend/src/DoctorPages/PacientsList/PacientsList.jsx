@@ -1,22 +1,62 @@
 import React, { Component } from "react";
 // react-bootstrap
 import { Table, Button } from "react-bootstrap";
+// scss
+import "./PacientsList.scss";
+// modal
+import EditPacientsModal from "./EditPacientsModal/EditPacientsModal";
 
 class PacientsList extends Component {
-    constructor() {
-        super();
-        this.state=[
-            {
-                id: 1,
-                name: 'Duffy',
-                surname: 'Duck'
-            }
-        ]
-    }
+  constructor() {
+    super();
+    this.state = {
+      show: false,
+      data: [
+        {
+          id: 1,
+          name: "Duffy",
+          surname: "Duck",
+        },
+        {
+          id: 2,
+          name: "Duffy",
+          surname: "Duck",
+        },
+        {
+          id: 3,
+          name: "Duffy",
+          surname: "Duck",
+        },
+        {
+          id: 4,
+          name: "Duffy",
+          surname: "Duck",
+        },
+        {
+          id: 5,
+          name: "Duffy",
+          surname: "Duck",
+        },
+      ],
+    };
+  }
 
-    render() {
+  showModal = () => {
+    this.setState({
+      show: true
+    });
+  }
+
+  closeModal = () => {
+    this.setState({
+      show: false
+    });
+  }
+
+  render() {
+    console.log(this.state.show);
     return (
-      <div className="d-flex justify-content-center align-items-center">
+      <div className="pacients-list-page d-flex justify-content-center align-items-center">
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -27,26 +67,28 @@ class PacientsList extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Larry</td>
-              <td>Larry</td>
-              <td>@twitter</td>
-            </tr>
+            {this.state.data.map((el) => {
+              return (
+                <tr>
+                  <td>{el.id}</td>
+                  <td>{el.name}</td>
+                  <td>{el.surname}</td>
+                  <td>
+                    <p>
+                      <Button onClick={this.showModal}>
+                        Acțiuni
+                      </Button>
+                    </p>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </Table>
+        <EditPacientsModal
+          show={this.state.show}
+          onHide={this.closeModal}
+        />
       </div>
     );
   }

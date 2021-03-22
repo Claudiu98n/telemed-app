@@ -1,0 +1,10 @@
+// responsive design
+
+@media screen and (max-width: 345px) {
+    .pacients-list-page {
+        td, th, Button {
+            padding: 0.2rem !important;
+            font-size: 13px;
+        }
+    }
+}

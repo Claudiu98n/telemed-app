@@ -10,6 +10,8 @@ import {GiVideoConference} from 'react-icons/gi';
 import {RiHomeSmileFill} from 'react-icons/ri';
 
 const SideDrawer = (props) => {
+
+
     return (
       <nav className={`side-drawer p-3 ${props.show ? 'open' : null}`}>
         <div className='d-flex justify-content-between align-items-center'>
@@ -79,8 +81,8 @@ const SideDrawer = (props) => {
                 Pacienți
               </p>
             </div>    
-            <div className="logout-container d-flex align-items-center">
-                <IoLogOutSharp className="logout-icon" onClick={props.logout} />
+            <div className="logout-container d-flex align-items-center" onClick={props.logout}>
+                <IoLogOutSharp className="logout-icon" />
                 <span className="ml-1 font-nunito-bold">Delogare</span>
             </div>
           </div>

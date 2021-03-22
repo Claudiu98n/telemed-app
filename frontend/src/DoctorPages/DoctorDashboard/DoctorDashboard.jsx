@@ -25,13 +25,13 @@ class DoctorDashboard extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   // const { history, location } = window;
-  //   // history.pushState(null, null, location.href);
-  //   if(localStorage.getItem('jwt') === null) {
-  //       this.props.history.push('/');
-  //   }
-  // }
+  componentDidMount() {
+    // const { history, location } = window;
+    // history.pushState(null, null, location.href);
+    // if(localStorage.getItem('jwt') === null) {
+    //     this.props.history.push('/');
+    // }
+  }
 
   logout = () => {
       localStorage.clear();
