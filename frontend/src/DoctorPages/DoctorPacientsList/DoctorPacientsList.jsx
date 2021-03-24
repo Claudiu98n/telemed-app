@@ -2,11 +2,11 @@ import React, { Component } from "react";
 // react-bootstrap
 import { Table, Button } from "react-bootstrap";
 // scss
-import "./PacientsList.scss";
+import "./DoctorPacientsList.scss";
 // modal
 import EditPacientsModal from "./EditPacientsModal/EditPacientsModal";
 
-class PacientsList extends Component {
+class DoctorPacientsList extends Component {
   constructor() {
     super();
     this.state = {
@@ -93,4 +93,4 @@ class PacientsList extends Component {
   }
 }
 
-export default PacientsList;
+export default DoctorPacientsList;

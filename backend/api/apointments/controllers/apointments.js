@@ -6,7 +6,7 @@
  */
 
 module.exports = {
-
+    
     async identifyUser(ctx) {
         let userInfo = await strapi.services['apointments'].identifyUser(ctx);
         return userInfo;

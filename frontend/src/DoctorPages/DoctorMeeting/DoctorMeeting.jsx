@@ -5,9 +5,9 @@ import { Jutsu } from 'react-jutsu';
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 // scss
-import './Meeting.scss';
+import './DoctorMeeting.scss';
 
-class Meeting extends Component {
+class DoctorMeeting extends Component {
     constructor() {
         super();
         this.state = {
@@ -66,4 +66,4 @@ class Meeting extends Component {
     }
 }
 
-export default Meeting;
+export default DoctorMeeting;
