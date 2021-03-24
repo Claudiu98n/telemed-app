@@ -7,14 +7,12 @@
     min-height: 100vh;
 }
 
-.btn-outline-primary:not(:disabled):not(.disabled).active:focus, .btn-outline-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-outline-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem #CEC041 !important;
+.form-control:focus {
+    border-color: $color-yellow !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem $color-yellow !important;
 }
 
-.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem #CEC041 !important;
-}
-
-.btn.focus, .btn:focus {
-    box-shadow: 0 0 0 0.2rem #CEC041 !important;
+input, .group-input {
+    border-radius: 6px;
 }

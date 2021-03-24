@@ -30,7 +30,7 @@
             .sign-up-form-container {
                 .group-input {
                     border: none;
-                    .rs-input-group-addon {
+                    .input-group-text {
                         background-color: $color-yellow;
                         & > svg {
                             color: $color-white;
@@ -38,7 +38,7 @@
                     }
                 }
 
-                & > Input {
+                & > input {
                     width: 100%;
                 }
             }
@@ -79,7 +79,7 @@
                 padding: 0px !important;
 
                 .sign-up-form-container {
-                    Input {
+                    input {
                         font-size: 12px;
                     }
 

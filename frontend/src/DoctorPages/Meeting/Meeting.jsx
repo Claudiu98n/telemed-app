@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 // jutsu
 import { Jutsu } from 'react-jutsu';
-// rsuite + react-bootstrap
-import { Input } from 'rsuite';
+// react-bootstrap
+import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 // scss
 import './Meeting.scss';
@@ -18,9 +18,9 @@ class Meeting extends Component {
         }
     }
 
-    handleChange = (value, event) => {
+    handleChange = (event) => {
         this.setState({
-            [event.target.name]: value
+            [event.target.name]: event.target.value
         });
     }
 
@@ -51,9 +51,9 @@ class Meeting extends Component {
                             errorComponent={<p>Oops, a apărut o eroare.</p>} />
                         ) : (
                         <form className="w-50 d-flex flex-column justify-content-center align-items-center">
-                        <Input id='room' type='text' name="room" placeholder='Cameră' value={this.state.room} onChange={this.handleChange} />
-                        <Input id='name' type='text' name="name" placeholder='Nume' value={this.state.name} onChange={this.handleChange} />
-                        <Input id='password' type='text' name="password" placeholder='Parolă (opțional)' value={this.state.password} onChange={this.handleChange} />
+                        <FormControl id='room' type='text' name="room" placeholder='Cameră' value={this.state.room} onChange={this.handleChange} />
+                        <FormControl id='name' type='text' name="name" placeholder='Nume' value={this.state.name} onChange={this.handleChange} />
+                        <FormControl id='password' type='text' name="password" placeholder='Parolă (opțional)' value={this.state.password} onChange={this.handleChange} />
                         <Button variant="primary" className="btn-primary mt-3" onClick={this.handleClick} type='submit'>
                             Start / Join
                         </Button>

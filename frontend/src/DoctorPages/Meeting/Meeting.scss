@@ -2,8 +2,18 @@
     .doctor-meeting {
         min-height: 70vh;
     
-        Input {
+        input {
             margin-bottom: 1rem;
+        }
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .doctor-meeting-page {
+        .doctor-meeting {
+            form {
+                width: 100% !important;
+            }
         }
     }
 }

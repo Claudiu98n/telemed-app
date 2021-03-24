@@ -13,7 +13,7 @@ const SideDrawer = (props) => {
 
 
     return (
-      <nav className={`side-drawer p-3 ${props.show ? 'open' : null}`}>
+      <nav className={`side-drawer p-3 ${props.show && 'open'}`}>
         <div className='d-flex justify-content-between align-items-center'>
           <img src={Logo} alt="logo" className='logo side-drawer-logo' />
           <CgClose className='side-drawer-close' onClick={() =>  props.close()} />

@@ -1,0 +1,68 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/createApointment",
+      "handler": "apointments.createApointment",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/identifyUser",
+      "handler": "apointments.identifyUser",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apointments",
+      "handler": "apointments.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apointments/count",
+      "handler": "apointments.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/apointments/:id",
+      "handler": "apointments.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/apointments",
+      "handler": "apointments.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/apointments/:id",
+      "handler": "apointments.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/apointments/:id",
+      "handler": "apointments.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

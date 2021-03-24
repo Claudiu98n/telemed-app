@@ -2,12 +2,14 @@ import React, { Component, Suspense, lazy } from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Loader from "react-loader-spinner";
 import "./App.scss";
+
+// import Error404 from "./Pages/error404/Error404";
+import VerifyDoctor from "./Onboarding/VerifyDoctor/VerifyDoctor";
 
 const SignIn = lazy(() => import("./Onboarding/SignIn/SignIn"));
 const SignUp = lazy(() => import("./Onboarding/SignUp/SignUp"));
@@ -15,9 +17,6 @@ const ResetPassword = lazy(() => import("./Onboarding/ResetPassword/ResetPasswor
 const SelectType = lazy(() => import("./Onboarding/SelectType/SelectType"));
 const DoctorDashboard = lazy(() => import("./DoctorPages/DoctorDashboard/DoctorDashboard"));
 const PacientDashboard = lazy(() => import("./PacientPages/PacientDashboard/PacientDashboard"));
-
-// import Error404 from "./Pages/error404/Error404";
-
 
 class App extends Component {
   render() {
@@ -48,6 +47,7 @@ class App extends Component {
               <Route path="/creeaza-cont" exact component={SignUp} />
               <Route path="/reseteaza-parola" exact component={ResetPassword} />
               <Route path="/selecteaza-tipul" exact component={SelectType} />
+              <Route path="/verificare-suplimentara" exact component={VerifyDoctor} />
               <Route path="/doctor-dashboard" exact component={DoctorDashboard} />
               <Route path="/pacient-dashboard" exact component={PacientDashboard} />
             </Switch>

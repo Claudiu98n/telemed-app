@@ -5,12 +5,18 @@ import Doctor from '../../Assets/Images/doctor-character.jpg';
 import Pacient from '../../Assets/Images/pacient-character-2.jpg';
 // react-reveal
 import Slide from 'react-reveal/Slide';
-// rsuite, react-bootstrap
+// react-bootstrap
 import { Row, Col } from 'react-bootstrap';
 // scss
 import './SelectType.scss';
 
 class SelectType extends Component {
+    componentDidMount() {
+        if(localStorage.getItem('userType') !== 'undefined') {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         return (
             <div className="select-type-page d-flex flex-column align-items-center">
@@ -21,14 +27,14 @@ class SelectType extends Component {
                             <p className="font-size-40 font-nunito-bold text-center">Alege tipul contului</p>
                             <Row className="mt-4">
                                 <Col className="col-select d-flex flex-column">
-                                    <div className="select-container">
+                                    <div className="select-container" onClick={() => this.props.history.push('/verificare-suplimentara')}>
                                         <img src={Doctor} alt="doctor" className="character-image" />
                                         <p className="w-100 text-center font-nunito-bold">Doctor</p>
                                     </div>
                                 </Col>
                                 <Col className="col-select d-flex flex-column align-items-center">
                                     <div className="select-container">
-                                        <img src={Pacient} alt="doctor" className="character-image" />
+                                        <img src={Pacient} alt="doctor" className="character-image" onClick={() => this.props.history.push('/pacient-dashboard')} />
                                         <p className="w-100 text-center font-nunito-bold">Pacient</p>
                                     </div>
                                 </Col>

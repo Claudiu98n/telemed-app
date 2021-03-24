@@ -54,7 +54,6 @@ class PacientsList extends Component {
   }
 
   render() {
-    console.log(this.state.show);
     return (
       <div className="pacients-list-page d-flex justify-content-center align-items-center">
         <Table striped bordered hover>
@@ -67,9 +66,9 @@ class PacientsList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((el) => {
+            {this.state.data.map((el, index) => {
               return (
-                <tr>
+                <tr key={index}>
                   <td>{el.id}</td>
                   <td>{el.name}</td>
                   <td>{el.surname}</td>

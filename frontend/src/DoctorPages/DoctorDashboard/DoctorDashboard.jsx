@@ -26,11 +26,11 @@ class DoctorDashboard extends Component {
   }
 
   componentDidMount() {
-    // const { history, location } = window;
-    // history.pushState(null, null, location.href);
-    // if(localStorage.getItem('jwt') === null) {
-    //     this.props.history.push('/');
-    // }
+    const { history, location } = window;
+    history.pushState(null, null, location.href);
+    if(localStorage.getItem('jwt') === null || localStorage.getItem('userType') === 'undefined' || localStorage.getItem('userType') === 'pacient') {
+        this.props.history.push('/');
+    }
   }
 
   logout = () => {

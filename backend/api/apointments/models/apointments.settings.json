@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "apointments",
+  "info": {
+    "name": "Apointments"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Data": {
+      "type": "string",
+      "required": true
+    },
+    "users_permissions_user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "apointments"
+    }
+  }
+}
