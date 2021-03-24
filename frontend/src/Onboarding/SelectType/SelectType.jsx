@@ -17,6 +17,11 @@ class SelectType extends Component {
         }
     }
 
+    handlePacient = () => {
+        localStorage.setItem("userType", 'pacient');
+        this.props.history.push('/pacient-dashboard');
+    }
+
     render() {
         return (
             <div className="select-type-page d-flex flex-column align-items-center">
@@ -34,7 +39,7 @@ class SelectType extends Component {
                                 </Col>
                                 <Col className="col-select d-flex flex-column align-items-center">
                                     <div className="select-container">
-                                        <img src={Pacient} alt="doctor" className="character-image" onClick={() => this.props.history.push('/pacient-dashboard')} />
+                                        <img src={Pacient} alt="doctor" className="character-image" onClick={this.handlePacient} />
                                         <p className="w-100 text-center font-nunito-bold">Pacient</p>
                                     </div>
                                 </Col>

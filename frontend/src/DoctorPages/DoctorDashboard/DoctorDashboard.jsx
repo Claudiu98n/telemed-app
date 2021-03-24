@@ -11,6 +11,7 @@ import DoctorMeeting from "../DoctorMeeting/DoctorMeeting";
 import DoctorPacientsList from "../DoctorPacientsList/DoctorPacientsList";
 import DoctorHomePage from "../DoctorHomePage/DoctorHomePage";
 import DoctorApointments from "../DoctorApointments/DoctorApointments";
+import DoctorProfile from "../DoctorProfile/DoctorProfile";
 
 class DoctorDashboard extends Component {
   constructor() {
@@ -88,6 +89,14 @@ class DoctorDashboard extends Component {
         highlightDoctorHomepage: false,
         highlightDoctorApointments: true,
       });
+    } else if (value === "DoctorProfile") {
+      this.setState({
+        selectedPage: value,
+        highlightMeeting: false,
+        highlightPacientsList: false,
+        highlightDoctorHomepage: false,
+        highlightDoctorApointments: false,
+      });
     }
   };
 
@@ -98,6 +107,7 @@ class DoctorDashboard extends Component {
     if (this.state.selectedPage === "PacientsList") toRender = <DoctorPacientsList />;
     if (this.state.selectedPage === "DoctorHomePage") toRender = <DoctorHomePage />;
     if (this.state.selectedPage === "DoctorApointments") toRender = <DoctorApointments />;
+    if (this.state.selectedPage === "DoctorProfile") toRender = <DoctorProfile />;
 
     let backdrop;
     if (this.state.sideDrawerOpen) {

@@ -1,0 +1,9 @@
+.doctor-apointments-page {
+    min-height: 70vh;
+}
+
+@media screen and (min-width: 2000px) {
+    .doctor-apointments-page {
+        align-items: center;
+    }
+}

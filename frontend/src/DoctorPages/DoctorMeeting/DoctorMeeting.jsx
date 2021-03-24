@@ -37,7 +37,7 @@ class DoctorMeeting extends Component {
         console.log(this.state);
         return (
             <div className="doctor-meeting-page">
-                <p className="h1 text-center font-nunito-bold">Creează un consult</p>
+                <p className="h2 text-center font-nunito-bold">Creează un consult</p>
                 <div className="doctor-meeting d-flex align-items-center justify-content-center">
                     {
                     this.state.call

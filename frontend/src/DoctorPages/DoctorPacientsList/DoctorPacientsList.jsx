@@ -55,7 +55,7 @@ class DoctorPacientsList extends Component {
 
   render() {
     return (
-      <div className="pacients-list-page d-flex justify-content-center align-items-center">
+      <div className="pacients-list-page d-flex justify-content-center">
         <Table striped bordered hover>
           <thead>
             <tr>

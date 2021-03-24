@@ -1,3 +1,8 @@
+.pacients-list-page {
+    min-height: 70vh;
+}
+
+
 // responsive design
 
 @media screen and (max-width: 345px) {
@@ -6,5 +11,12 @@
             padding: 0.2rem !important;
             font-size: 13px;
         }
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    .pacients-list-page {
+        display: flex;
+        align-items: center;
     }
 }
