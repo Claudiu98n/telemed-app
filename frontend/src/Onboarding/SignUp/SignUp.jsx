@@ -2,8 +2,7 @@ import React, { Component } from "react";
 // scss
 import "./SignUp.scss";
 // react-bootstrap
-import { FormControl, InputGroup } from "react-bootstrap";
-import { Button } from "react-bootstrap";
+import { FormControl, InputGroup, Button } from "react-bootstrap";
 // svg
 import { ReactComponent as LeftSideImage } from "../../Assets/Svg/undraw_medical_care_movn.svg";
 import Logo from "../../Assets/Icons/logo-telemed.png";
@@ -23,10 +22,37 @@ class SignUp extends Component {
       email: "",
       password: "",
       confirmPassword: "",
+      pressed: false,
     };
   }
 
+  isPasswordOk = () => {
+    if (this.state.password !== this.state.confirmPassword) {
+      return false;
+    }
+    return true;
+  };
+
   createAccount = async () => {
+    this.setState({
+      pressed: true,
+    });
+
+    if (this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
+      toast.error("Ati lasat campuri necompletate");
+      return;
+    }
+
+    if (this.isPasswordOk() === false) {
+      toast.error("Cele doua parole nu sunt identice");
+      return;
+    }
+
+    if(!this.state.email.includes('@') || !this.state.email.includes('.')) {
+      toast.error("Email-ul nu are format corespunzător");
+      return;
+    }
+
     let toSend = {
       username: this.state.email,
       email: this.state.email,
@@ -50,9 +76,9 @@ class SignUp extends Component {
       toast.success("Contul a fost creat cu succes");
     } catch (e) {
       switch (e.response.status) {
-        case 400:
-          toast.error("Email sau parola gresita");
-          break;
+        // case 400:
+        //   toast.error("Email sau parola gresita");
+        //   break;
 
         default:
           toast.error("S-a produs o eroare la crearea contului");

@@ -20,7 +20,7 @@ class Header extends Component {
             />
           </Col>
           <Col className='d-flex justify-content-end'>
-            <div className='user-icon-container' onClick={() => this.props.setSelectedPage("")}>
+            <div className='user-icon-container' onClick={() => this.props.setSelectedPage("PacientProfile")}>
               <FaUserAlt />
             </div>
           </Col>

@@ -33,8 +33,7 @@ class DoctorDashboard extends Component {
     history.pushState(null, null, location.href);
     if (
       localStorage.getItem("jwt") === null ||
-      localStorage.getItem("userType") === "undefined" ||
-      localStorage.getItem("userType") === "pacient"
+      localStorage.getItem("userType") !== "doctor" 
     ) {
       this.props.history.push("/");
     }
@@ -104,10 +103,14 @@ class DoctorDashboard extends Component {
     if (this.state.loading === true) return <p> Se incarca... </p>;
     let toRender = null;
     if (this.state.selectedPage === "Meeting") toRender = <DoctorMeeting />;
-    if (this.state.selectedPage === "PacientsList") toRender = <DoctorPacientsList />;
-    if (this.state.selectedPage === "DoctorHomePage") toRender = <DoctorHomePage />;
-    if (this.state.selectedPage === "DoctorApointments") toRender = <DoctorApointments />;
-    if (this.state.selectedPage === "DoctorProfile") toRender = <DoctorProfile />;
+    if (this.state.selectedPage === "PacientsList")
+      toRender = <DoctorPacientsList />;
+    if (this.state.selectedPage === "DoctorHomePage")
+      toRender = <DoctorHomePage />;
+    if (this.state.selectedPage === "DoctorApointments")
+      toRender = <DoctorApointments />;
+    if (this.state.selectedPage === "DoctorProfile")
+      toRender = <DoctorProfile />;
 
     let backdrop;
     if (this.state.sideDrawerOpen) {
@@ -115,7 +118,7 @@ class DoctorDashboard extends Component {
     }
 
     return (
-      <div className="dashboard">
+      <div className="doctor-dashboard">
         <Header
           drawerToggleClickHandler={this.drawerToggleClickHandler}
           setSelectedPage={this.setSelectedPage}

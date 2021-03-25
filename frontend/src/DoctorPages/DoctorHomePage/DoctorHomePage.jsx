@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './DoctorHomePage.scss';
 import {ReactComponent as DoctorHomepageIcon} from '../../Assets/Svg/undraw_doctors_hwty.svg';
+
 class DoctorHomePage extends Component {
     render() {
         return (
