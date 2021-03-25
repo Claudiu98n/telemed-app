@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
-import User from '../../Assets/Images/user.png';
+import User from '../../Assets/Images/avatar.png';
 import './DoctorProfile.scss';
 
 class DoctorProfile extends Component {

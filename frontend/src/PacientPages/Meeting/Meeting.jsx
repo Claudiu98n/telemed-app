@@ -4,7 +4,7 @@ class Meeting extends Component {
     render() {
         return (
             <div>
-                meeting
+                Modul de conferință in construcție
             </div>
         )
     }
