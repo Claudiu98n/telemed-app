@@ -18,9 +18,7 @@ class PacientDashboard extends Component {
   constructor() {
     super();
     this.state = {
-      // loading: true,
-      // user: {},
-      // apointments: [],
+      loading: true,
       selectedPage: "PacientHomePage",
       sideDrawerOpen: false,
       highlightScheduleMeetingIcon: false,
@@ -116,50 +114,38 @@ class PacientDashboard extends Component {
       this.props.history.push("/");
     }
 
-    // try {
-    //   let userInfo = await axios.get("http://localhost:1337/identifyUser", {
-    //     headers: {
-    //       Authorization: "Bearer " + localStorage.getItem("jwt"),
-    //     },
-    //   });
+    try {
+      let userInfo = await axios.get("http://localhost:1337/identifyUser", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
 
-    //   this.setState({
-    //     user: userInfo.data,
-    //     loading: false,
-    //     apointments: userInfo.data.apointments,
-    //   });
-    // } catch (e) {
-    //   console.log(e);
-    // }
+      this.setState({
+        user: userInfo.data,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
-
-  // makeApointment = async () => {
-  //   let response = await axios.post(
-  //     "http://localhost:1337/createApointment",
-  //     {
-  //       Data: "marti la 5",
-  //     },
-  //     {
-  //       headers: {
-  //         Authorization: "Bearer " + localStorage.getItem("jwt"),
-  //       },
-  //     }
-  //   );
-
-  //   console.log(response.data);
-  // };
 
   render() {
     if (this.state.loading === true) return <p> Se incarca... </p>;
     let toRender = null;
     if (this.state.selectedPage === "Meeting") toRender = <Meeting />;
     if (this.state.selectedPage === "ScheduleMeeting")
-      toRender = <ScheduleMeeting />;
+      toRender = <ScheduleMeeting apointments={this.state.user.apointments} />;
     if (this.state.selectedPage === "MedicalRecords")
       toRender = <MedicalRecords />;
     if (this.state.selectedPage === "Medication") toRender = <Medication />;
     if (this.state.selectedPage === "PacientProfile")
-      toRender = <PacientProfile />;
+      toRender = (
+        <PacientProfile
+          email={this.state.user.email}
+          date={this.state.user.created_at}
+        />
+      );
     if (this.state.selectedPage === "PacientHomePage")
       toRender = <PacientHomePage />;
 
@@ -179,6 +165,7 @@ class PacientDashboard extends Component {
           close={this.backdropClickHandler}
           selectedPage={this.state.selectedPage}
           setSelectedPage={this.setSelectedPage}
+          logout={this.logout}
           highlightScheduleMeetingIcon={this.state.highlightScheduleMeetingIcon}
           highlightMeeting={this.state.highlightMeeting}
           highlightMedicationIcon={this.state.highlightMedicationIcon}
@@ -188,21 +175,6 @@ class PacientDashboard extends Component {
         {backdrop}
         <div className="content-container to-render-pages">{toRender}</div>
       </div>
-
-      // <div onClick={this.makeApointment}>
-      //   <div onClick={this.logout}>pacient</div>
-      //   {this.state.apointments.map((el, index) => {
-      //     return (
-      //       <div
-      //         key={index}
-      //         className="mt-5 mt-5"
-      //         style={{ background: "black", color: "white" }}
-      //       >
-      //         {el.Data}
-      //       </div>
-      //     );
-      //   })}
-      // </div>
     );
   }
 }

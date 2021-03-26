@@ -9,6 +9,7 @@ import { GiVideoConference } from "react-icons/gi";
 import { FaLaptopMedical } from "react-icons/fa";
 import { IoDocuments } from "react-icons/io5";
 import { RiHomeSmileFill } from "react-icons/ri";
+import { IoLogOutSharp } from "react-icons/io5";
 
 const SideDrawer = (props) => {
   return (
@@ -109,6 +110,14 @@ const SideDrawer = (props) => {
           >
             Fișă Medicală
           </p>
+        </div>
+
+        <div
+          className="logout-container d-flex align-items-center"
+          onClick={props.logout}
+        >
+          <IoLogOutSharp className="logout-icon" />
+          <span className="ml-1 font-nunito-bold">Delogare</span>
         </div>
       </div>
     </nav>
