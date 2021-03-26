@@ -4,7 +4,7 @@ import "./ChooseDoctorModal.scss";
 // react-bootstrap
 import { Modal, Form, Button } from "react-bootstrap";
 
-import { modalDate, removeOffset, addOffsetBack } from "../../../utils/formatDate";
+import { modalDate } from "../../../utils/formatDate";
 import axios from "axios";
 
 class ChooseDoctorModal extends Component {
@@ -36,12 +36,12 @@ class ChooseDoctorModal extends Component {
   };
 
   handleConfirm = () => {
-      this.props.makeApointment(removeOffset(this.props.newSchedule));
-      this.props.onHide();
-  }
+    this.props.makeApointment(this.props.newSchedule);
+    this.props.onHide();
+  };
 
   render() {
-    console.log('props', this.props.newSchedule);
+    console.log("props", this.props.newSchedule);
     return (
       <Modal
         show={this.props.show}
@@ -52,18 +52,26 @@ class ChooseDoctorModal extends Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            <p className="font-nunito-bold">Programare - {modalDate(this.props.newSchedule.toString())}</p>
+            <p className="font-nunito-bold">
+              Programare - {modalDate(this.props.newSchedule?.toString())}
+            </p>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p className="h5 font-nunito-bold text-center">Alegeți doctorul</p>
           <div className="mt-2 d-flex flex-column align-items-center">
             <Form.Control as="select" className="select-doctor w-50" custom>
-                {this.state.doctors.map((el, index) => {
+              {this.state.doctors.map((el, index) => {
                 return <option key={index}>{el.email}</option>;
-                })}
+              })}
             </Form.Control>
-            <Button variant="primary" className="btn-primary mt-5 w-50" onClick={this.handleConfirm}>Confirmă</Button>
+            <Button
+              variant="primary"
+              className="btn-primary mt-5 w-50"
+              onClick={this.props.newSchedule ? this.handleConfirm : null}
+            >
+              Confirmă
+            </Button>
           </div>
         </Modal.Body>
       </Modal>

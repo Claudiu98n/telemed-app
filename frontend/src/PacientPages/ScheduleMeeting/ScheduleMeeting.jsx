@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ScheduleSelector from "react-schedule-selector";
 import "./ScheduleMeeting.scss";
-import { removeOffset } from "../../utils/formatDate";
 import ChooseDoctorModal from "./ChooseDoctorModal/ChooseDoctorModal";
 import axios from 'axios';
 
@@ -19,7 +18,7 @@ class ScheduleMeeting extends Component {
     let finishedApointments = [];
 
     this.props.apointments.map((el) => {
-      finishedApointments.push(removeOffset(el.date));
+      finishedApointments.push(el.date);
     });
 
     this.setState({ schedule: finishedApointments });

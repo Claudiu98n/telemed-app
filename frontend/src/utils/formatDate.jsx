@@ -7,27 +7,28 @@ export function formatDate(date) {
   return `${newDateFormated[2]}.${newDateFormated[1]}.${newDateFormated[0]}`;
 }
 
-export function removeOffset(date) {
-  let formatedDate = new Date(date);
-
-  if (formatedDate.toString().includes("+0300")) {
-    formatedDate.setHours(formatedDate.getHours() + 1);
-  }
-
-  return formatedDate;
-}
-
-export function addOffsetBack(date) {
-  let formatedDate = new Date(date);
-
-  if (formatedDate.toString().includes("+0300")) {
-    formatedDate.setHours(formatedDate.getHours() - 1);
-  }
-
-  return formatedDate;
-}
-
 export function modalDate(date) {
   date = new Date(date);
   return date.toLocaleString();
 }
+
+
+// export function removeOffset(date) {
+//   let formatedDate = new Date(date);
+
+//   if (formatedDate.toString().includes("Mar 28")) {
+//     formatedDate.setHours(formatedDate.getHours() + 1);
+//   }
+
+//   return formatedDate;
+// }
+
+// export function addOffsetBack(date) {
+//   let formatedDate = new Date(date);
+
+//   if (formatedDate.toString().includes("Mar 28")) {
+//     formatedDate.setHours(formatedDate.getHours() - 1);
+//   }
+
+//   return formatedDate;
+// }
