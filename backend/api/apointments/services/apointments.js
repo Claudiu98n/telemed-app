@@ -34,7 +34,10 @@ module.exports = {
 
         const user = await strapi 
         .query('apointments')
-        .create({users_permissions_user: userInfo.id, date: ctx.request.body.date})
+        .create({
+            users_permissions_user: userInfo.id, date: ctx.request.body.date,
+            doctor: ctx.request.body.doctorId, date: ctx.request.body.date
+        })
 
         return true;
     }

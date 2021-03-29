@@ -62,6 +62,10 @@
     "apointments": {
       "via": "users_permissions_user",
       "collection": "apointments"
+    },
+    "apoints": {
+      "via": "doctor",
+      "collection": "apointments"
     }
   }
 }

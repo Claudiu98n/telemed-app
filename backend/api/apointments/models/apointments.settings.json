@@ -11,13 +11,18 @@
     "draftAndPublish": true
   },
   "attributes": {
+    "date": {
+      "type": "datetime"
+    },
     "users_permissions_user": {
       "plugin": "users-permissions",
       "model": "user",
       "via": "apointments"
     },
-    "date": {
-      "type": "datetime"
+    "doctor": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "apoints"
     }
   }
 }

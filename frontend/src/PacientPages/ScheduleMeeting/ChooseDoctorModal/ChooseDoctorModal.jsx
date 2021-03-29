@@ -14,6 +14,7 @@ class ChooseDoctorModal extends Component {
     super(props);
     this.state = {
       doctors: [],
+      chosenDoctor: ''
     };
   }
 
@@ -37,13 +38,21 @@ class ChooseDoctorModal extends Component {
     }
   };
 
+  chooseDoctor = (event) => {
+    this.setState({
+      chosenDoctor: event.target.value,
+    });
+  };
+
   handleConfirm = () => {
-    this.props.makeApointment(this.props.newSchedule);
+    let doctorId = this.state.doctors.filter(el => el.email === this.state.chosenDoctor)[0].id
+    this.props.makeApointment(this.props.newSchedule, doctorId);
     this.props.onHide();
-    window.location.reload();
+    // window.location.reload();
   };
 
   render() {
+    console.log(this.state);
     console.log("props", this.props.newSchedule);
     return (
       <Modal
@@ -63,7 +72,13 @@ class ChooseDoctorModal extends Component {
         <Modal.Body>
           <p className="h5 font-nunito-bold text-center">Alegeți doctorul</p>
           <div className="mt-2 d-flex flex-column align-items-center">
-            <Form.Control as="select" className="select-doctor w-50" custom>
+            <Form.Control
+              as="select"
+              className="select-doctor w-50"
+              custom
+              value={this.state.chosenDoctor}
+              onChange={this.chooseDoctor}
+            >
               {this.state.doctors.map((el, index) => {
                 return <option key={index}>{el.email}</option>;
               })}

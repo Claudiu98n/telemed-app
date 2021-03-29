@@ -41,11 +41,12 @@ class ScheduleMeeting extends Component {
     });
   };
 
-  makeApointment = async (date) => {
+  makeApointment = async (date, doctor) => {
     let response = await axios.post(
       "http://localhost:1337/createApointment",
       {
         date: date,
+        doctorId: doctor
       },
       {
         headers: {
