@@ -14,7 +14,8 @@ class ChooseDoctorModal extends Component {
     super(props);
     this.state = {
       doctors: [],
-      chosenDoctor: ''
+      chosenDoctor: "",
+      loading: true
     };
   }
 
@@ -36,6 +37,12 @@ class ChooseDoctorModal extends Component {
     } catch (e) {
       console.log(e);
     }
+
+    if(this.state.loading === false ) {
+      this.setState({
+        chosenDoctor: this.state.doctors[0].email
+      });
+    }
   };
 
   chooseDoctor = (event) => {
@@ -45,15 +52,14 @@ class ChooseDoctorModal extends Component {
   };
 
   handleConfirm = () => {
-    let doctorId = this.state.doctors.filter(el => el.email === this.state.chosenDoctor)[0].id
+    let doctorId = this.state.doctors.filter(
+      (el) => el.email === this.state.chosenDoctor
+    )[0].id;
     this.props.makeApointment(this.props.newSchedule, doctorId);
     this.props.onHide();
-    // window.location.reload();
   };
 
   render() {
-    console.log(this.state);
-    console.log("props", this.props.newSchedule);
     return (
       <Modal
         show={this.props.show}
