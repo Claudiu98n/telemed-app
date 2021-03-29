@@ -17,7 +17,7 @@ class DoctorProfile extends Component {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Created at 16.09.2020</small>
+            <small className="text-muted">Member since 16.09.2020</small>
           </Card.Footer>
         </Card>
       </div>

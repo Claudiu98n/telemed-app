@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+
 // style
 import "./ChooseDoctorModal.scss";
 // react-bootstrap
@@ -38,6 +40,7 @@ class ChooseDoctorModal extends Component {
   handleConfirm = () => {
     this.props.makeApointment(this.props.newSchedule);
     this.props.onHide();
+    window.location.reload();
   };
 
   render() {
@@ -79,4 +82,4 @@ class ChooseDoctorModal extends Component {
   }
 }
 
-export default ChooseDoctorModal;
+export default withRouter(ChooseDoctorModal);

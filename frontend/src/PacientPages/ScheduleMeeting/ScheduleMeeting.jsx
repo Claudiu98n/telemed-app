@@ -25,11 +25,13 @@ class ScheduleMeeting extends Component {
   };
 
   handleChange = (newSchedule) => {
-    if(!this.state.schedule.includes(newSchedule[newSchedule.length-1])) {
-      this.setState({
-        show: true,
-        newSchedule: newSchedule[newSchedule.length-1]
-      })
+    if(newSchedule.length > 0) {
+      if(!this.state.schedule.includes(newSchedule[newSchedule.length-1])) {
+        this.setState({
+          show: true,
+          newSchedule: newSchedule[newSchedule.length-1]
+        })
+      }
     }
   };
 
@@ -66,6 +68,9 @@ class ScheduleMeeting extends Component {
           minTime={8}
           maxTime={23}
           hourlyChunks={1}
+          selectedColor={'#962DAF'}
+          unselectedColor={'#E7C3EF'}
+          hoveredColor={'#968e45'}
           onChange={this.handleChange}
         />
         <ChooseDoctorModal

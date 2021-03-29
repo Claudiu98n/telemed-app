@@ -20,7 +20,7 @@ class PacientProfile extends Component {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <small className="text-muted">Created at {formatDate(date)}</small>
+            <small className="text-muted">Member since {formatDate(date)}</small>
           </Card.Footer>
         </Card>
       </div>
