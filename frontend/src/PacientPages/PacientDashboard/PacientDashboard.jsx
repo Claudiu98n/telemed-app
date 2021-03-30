@@ -26,6 +26,7 @@ class PacientDashboard extends Component {
       highlightMedicationIcon: false,
       highlightMedicalRecords: false,
       highlightPacientHomepage: true,
+      user: {}
     };
   }
 

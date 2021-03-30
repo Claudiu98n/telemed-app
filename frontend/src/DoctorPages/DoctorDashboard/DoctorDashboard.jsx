@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // style
 import "./DoctorDashboard.scss";
 import { toast } from "react-toastify";
+import axios from "axios";
 // nav-components
 import SideDrawer from "../DoctorNavigation/SideDrawer";
 import Backdrop from "../DoctorNavigation/Backdrop";
@@ -18,7 +19,7 @@ class DoctorDashboard extends Component {
     super();
     this.state = {
       selectedPage: "DoctorHomePage",
-      userType: "",
+      user: {},
       loading: false,
       sideDrawerOpen: false,
       highlightMeeting: false,
@@ -28,16 +29,31 @@ class DoctorDashboard extends Component {
     };
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     const { history, location } = window;
     history.pushState(null, null, location.href);
     if (
       localStorage.getItem("jwt") === null ||
-      localStorage.getItem("userType") !== "doctor" 
+      localStorage.getItem("userType") !== "doctor"
     ) {
       this.props.history.push("/");
     }
-  }
+
+    try {
+      let userInfo = await axios.get("http://localhost:1337/identifyUser", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
+
+      this.setState({
+        user: userInfo.data,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   logout = () => {
     localStorage.clear();
@@ -108,9 +124,16 @@ class DoctorDashboard extends Component {
     if (this.state.selectedPage === "DoctorHomePage")
       toRender = <DoctorHomePage />;
     if (this.state.selectedPage === "DoctorApointments")
-      toRender = <DoctorApointments />;
+      toRender = (
+        <DoctorApointments apointments={this.state.user.apoints} />
+      );
     if (this.state.selectedPage === "DoctorProfile")
-      toRender = <DoctorProfile />;
+      toRender = (
+        <DoctorProfile
+          email={this.state.user.email}
+          date={this.state.user.created_at}
+        />
+      );
 
     let backdrop;
     if (this.state.sideDrawerOpen) {

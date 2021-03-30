@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import ScheduleSelector from "react-schedule-selector";
 import "./ScheduleMeeting.scss";
 import ChooseDoctorModal from "./ChooseDoctorModal/ChooseDoctorModal";
-import axios from 'axios';
+import axios from "axios";
+import { modalDate } from "../../utils/formatDate";
+import { Button } from "react-bootstrap";
 
 class ScheduleMeeting extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class ScheduleMeeting extends Component {
       show: false,
       schedule: [],
       newSchedule: "",
+      showApointments: false,
     };
   }
 
@@ -25,14 +28,20 @@ class ScheduleMeeting extends Component {
   };
 
   handleChange = (newSchedule) => {
-    if(newSchedule.length > 0) {
-      if(!this.state.schedule.includes(newSchedule[newSchedule.length-1])) {
+    if (newSchedule.length > 0) {
+      if (!this.state.schedule.includes(newSchedule[newSchedule.length - 1])) {
         this.setState({
           show: true,
-          newSchedule: newSchedule[newSchedule.length-1]
-        })
+          newSchedule: newSchedule[newSchedule.length - 1],
+        });
       }
     }
+  };
+
+  handleShowApointments = () => {
+    this.setState({
+      showApointments: !this.state.showApointments,
+    });
   };
 
   closeModal = () => {
@@ -46,7 +55,7 @@ class ScheduleMeeting extends Component {
       "http://localhost:1337/createApointment",
       {
         date: date,
-        doctorId: doctor
+        doctorId: doctor,
       },
       {
         headers: {
@@ -59,7 +68,10 @@ class ScheduleMeeting extends Component {
   };
 
   render() {
-    console.log(this.state.schedule);
+    let toRender = null;
+    toRender = this.state.schedule.map((el) => {
+      return <p>{modalDate(el)}</p>;
+    });
 
     return (
       <div className="pacient-schedule-page">
@@ -69,11 +81,33 @@ class ScheduleMeeting extends Component {
           minTime={8}
           maxTime={23}
           hourlyChunks={1}
-          selectedColor={'#962DAF'}
-          unselectedColor={'#E7C3EF'}
-          hoveredColor={'#968e45'}
+          selectedColor={"#962DAF"}
+          unselectedColor={"#E7C3EF"}
+          hoveredColor={"#968e45"}
           onChange={this.handleChange}
         />
+        {this.state.schedule.length > 0 ? (
+          <div className="d-flex flex-column align-items-center">
+            <Button
+              variant="primary"
+              className="btn-primary mt-5"
+              onClick={this.handleShowApointments}
+            >
+              {this.state.showApointments
+                ? `Ascunde programările efectuate`
+                : `Arată programările efectuate`}
+            </Button>
+            {this.state.showApointments && (
+              <div className="confirmed-apointments-container mt-3">
+                {toRender}
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="d-flex justify-content-center mt-5">
+            <p>Nu aveți programări efectuate</p>
+          </div>
+        )}
         <ChooseDoctorModal
           newSchedule={this.state.newSchedule}
           show={this.state.show}
@@ -81,21 +115,6 @@ class ScheduleMeeting extends Component {
           makeApointment={this.makeApointment}
         />
       </div>
-
-      // <div onClick={this.makeApointment}>
-      //   <div onClick={this.logout}>pacient</div>
-      //   {this.state.apointments.map((el, index) => {
-      //     return (
-      //       <div
-      //         key={index}
-      //         className="mt-5 mt-5"
-      //         style={{ background: "black", color: "white" }}
-      //       >
-      //         {el.Data}
-      //       </div>
-      //     );
-      //   })}
-      // </div>
     );
   }
 }
