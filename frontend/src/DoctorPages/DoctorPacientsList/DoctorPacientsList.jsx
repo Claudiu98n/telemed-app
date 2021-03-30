@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 // react-bootstrap
 import { Table, Button } from "react-bootstrap";
 // scss
@@ -10,6 +11,8 @@ class DoctorPacientsList extends Component {
   constructor() {
     super();
     this.state = {
+      activePacient: {},
+      pacients: [],
       show: false,
       data: [
         {
@@ -41,40 +44,65 @@ class DoctorPacientsList extends Component {
     };
   }
 
-  showModal = () => {
+  componentDidMount = async () => {
+    try {
+      let pacients = await axios.get(
+        "http://localhost:1337/users?_where[role.type]=pacient",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+        }
+      );
+
+      this.setState({
+        pacients: pacients.data,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  showModal = (el) => {
     this.setState({
-      show: true
+      show: true,
+      activePacient: el,
     });
-  }
+  };
 
   closeModal = () => {
     this.setState({
-      show: false
+      show: false,
     });
-  }
+  };
 
   render() {
-    return (
-      <div className="pacients-list-page d-flex justify-content-center">
+    console.log(this.state.pacients);
+
+    let toRender = null;
+
+    if (this.state.pacients.length > 0) {
+      toRender = (
         <Table striped bordered hover>
           <thead>
             <tr>
               <th>Număr</th>
               <th>Nume</th>
-              <th>Prenume</th>
+              <th>Email</th>
               <th>Accesează</th>
             </tr>
           </thead>
           <tbody>
-            {this.state.data.map((el, index) => {
+            {this.state.pacients.map((el, index) => {
               return (
                 <tr key={index}>
-                  <td>{el.id}</td>
-                  <td>{el.name}</td>
-                  <td>{el.surname}</td>
+                  <td>{1 + index}</td>
+                  <td>{el.username}</td>
+                  <td>{el.email}</td>
                   <td>
                     <p>
-                      <Button onClick={this.showModal}>
+                      <Button onClick={() => this.showModal(el)}>
                         Acțiuni
                       </Button>
                     </p>
@@ -84,9 +112,18 @@ class DoctorPacientsList extends Component {
             })}
           </tbody>
         </Table>
+      );
+    } else {
+      toRender = <p>Nu există pacienți.</p>
+    }
+
+    return (
+      <div className="pacients-list-page d-flex justify-content-center">
+        {toRender}
         <EditPacientsModal
           show={this.state.show}
           onHide={this.closeModal}
+          activePacient={this.state.activePacient}
         />
       </div>
     );

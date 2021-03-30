@@ -27,7 +27,7 @@ class EditPacientsModal extends Component {
         toRender = <EditPacientsMedicalRecords />;
         break;
       case "medication":
-        toRender = <EditPacientsMedication />;
+        toRender = <EditPacientsMedication activePacient={this.props.activePacient}/>;
         break;
       default:
         return null;
@@ -35,6 +35,7 @@ class EditPacientsModal extends Component {
 
     return (
       <Modal
+        className="edit-pacients-modal"
         show={this.props.show}
         onHide={this.props.onHide}
         size="lg"

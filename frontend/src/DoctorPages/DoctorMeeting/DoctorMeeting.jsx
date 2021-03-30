@@ -53,7 +53,7 @@ class DoctorMeeting extends Component {
                         <form className="w-50 d-flex flex-column justify-content-center align-items-center">
                         <FormControl id='room' type='text' name="room" placeholder='Cameră' value={this.state.room} onChange={this.handleChange} />
                         <FormControl id='name' type='text' name="name" placeholder='Nume' value={this.state.name} onChange={this.handleChange} />
-                        <FormControl id='password' type='text' name="password" placeholder='Parolă (opțional)' value={this.state.password} onChange={this.handleChange} />
+                        <FormControl id='password' type='text' name="password" placeholder='Parolă (obligatoriu - pentru securitate)' value={this.state.password} onChange={this.handleChange} />
                         <Button variant="primary" className="btn-primary mt-3" onClick={this.handleClick} type='submit'>
                             Start / Join
                         </Button>
