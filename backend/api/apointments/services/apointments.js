@@ -22,10 +22,17 @@ module.exports = {
         .query('user', 'users-permissions')
         .findOne({id: id})
 
-        console.log('user');
+        // console.log('user');
         // console.log(user);
 
-        return user;
+        return {
+            email: user.email,
+            username: user.username, 
+            id: user.id, 
+            apointments: user.apointments, 
+            apoints: user.apoints, 
+            created_at: user.created_at
+        };
     },
 
     async createApointment(ctx) {
