@@ -72,7 +72,7 @@ class DoctorPacientsList extends Component {
                 <tr key={index}>
                   <td>{1 + index}</td>
                   <td>{el.username}</td>
-                  <td>{el.email}</td>
+                  <td style={{wordBreak: 'break-all'}}>{el.email}</td>
                   <td>
                     <p>
                       <Button onClick={() => this.showModal(el)}>

@@ -40,7 +40,7 @@ class ChooseDoctorModal extends Component {
 
     if(this.state.loading === false ) {
       this.setState({
-        chosenDoctor: this.state.doctors[0].email
+        chosenDoctor: this.state.doctors[0].username
       });
     }
   };
@@ -53,7 +53,7 @@ class ChooseDoctorModal extends Component {
 
   handleConfirm = () => {
     let doctorId = this.state.doctors.filter(
-      (el) => el.email === this.state.chosenDoctor
+      (el) => el.username === this.state.chosenDoctor
     )[0].id;
     this.props.makeApointment(this.props.newSchedule, doctorId);
     this.props.onHide();
@@ -86,7 +86,7 @@ class ChooseDoctorModal extends Component {
               onChange={this.chooseDoctor}
             >
               {this.state.doctors.map((el, index) => {
-                return <option key={index}>{el.email}</option>;
+                return <option key={index}>{el.username}</option>;
               })}
             </Form.Control>
             <Button

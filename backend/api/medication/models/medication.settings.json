@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medications",
+  "info": {
+    "name": "medication",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "medicament": {
+      "type": "string",
+      "unique": true,
+      "required": true,
+      "minLength": 2
+    },
+    "hour": {
+      "type": "time",
+      "unique": false,
+      "required": true
+    },
+    "start": {
+      "type": "date",
+      "required": true,
+      "unique": false
+    },
+    "end": {
+      "type": "date",
+      "unique": false,
+      "required": true
+    },
+    "pacient": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "medications"
+    },
+    "doctor_name": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    }
+  }
+}

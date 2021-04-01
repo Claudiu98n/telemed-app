@@ -32,6 +32,23 @@
   }
 }
 
+.btn-outline-primary-black {
+  @extend .font-nunito-regular;
+  background-color: transparent !important;
+  border: none !important;
+  border: 1px solid $color-yellow !important;
+  border-radius: 30px !important;
+  color: $color-purple !important;
+  padding: 6px 14px !important;
+  outline: none !important;
+
+  &:hover {
+    background-color: $color-yellow !important;
+    color: $color-white !important;
+  }
+}
+
+
 // Special color fonts
 
 .font-color-faded {

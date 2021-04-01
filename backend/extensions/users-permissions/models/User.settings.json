@@ -66,6 +66,10 @@
     "apoints": {
       "via": "doctor",
       "collection": "apointments"
+    },
+    "medications": {
+      "via": "pacient",
+      "collection": "medication"
     }
   }
 }

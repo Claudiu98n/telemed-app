@@ -132,13 +132,15 @@ class PacientDashboard extends Component {
   };
 
   render() {
+    console.log(this.state.user);
     let toRender = null;
     if (this.state.selectedPage === "Meeting") toRender = <Meeting />;
     if (this.state.selectedPage === "ScheduleMeeting")
       toRender = <ScheduleMeeting apointments={this.state.user.apointments} />;
     if (this.state.selectedPage === "MedicalRecords")
       toRender = <MedicalRecords />;
-    if (this.state.selectedPage === "Medication") toRender = <Medication />;
+    if (this.state.selectedPage === "Medication")
+      toRender = <Medication medications={this.state.user.medications} />;
     if (this.state.selectedPage === "PacientProfile")
       toRender = (
         <PacientProfile
