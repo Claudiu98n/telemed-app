@@ -14,33 +14,6 @@ class DoctorPacientsList extends Component {
       activePacient: {},
       pacients: [],
       show: false,
-      data: [
-        {
-          id: 1,
-          name: "Duffy",
-          surname: "Duck",
-        },
-        {
-          id: 2,
-          name: "Duffy",
-          surname: "Duck",
-        },
-        {
-          id: 3,
-          name: "Duffy",
-          surname: "Duck",
-        },
-        {
-          id: 4,
-          name: "Duffy",
-          surname: "Duck",
-        },
-        {
-          id: 5,
-          name: "Duffy",
-          surname: "Duck",
-        },
-      ],
     };
   }
 

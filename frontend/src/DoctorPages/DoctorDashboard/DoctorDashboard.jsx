@@ -124,12 +124,11 @@ class DoctorDashboard extends Component {
     if (this.state.selectedPage === "DoctorHomePage")
       toRender = <DoctorHomePage />;
     if (this.state.selectedPage === "DoctorApointments")
-      toRender = (
-        <DoctorApointments apointments={this.state.user.apoints} />
-      );
+      toRender = <DoctorApointments apointments={this.state.user.apoints} />;
     if (this.state.selectedPage === "DoctorProfile")
       toRender = (
         <DoctorProfile
+          username={this.state.user.username}
           email={this.state.user.email}
           date={this.state.user.created_at}
         />

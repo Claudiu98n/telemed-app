@@ -19,6 +19,7 @@ class SignUp extends Component {
   constructor() {
     super();
     this.state = {
+      username: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -38,7 +39,12 @@ class SignUp extends Component {
       pressed: true,
     });
 
-    if (this.state.email === "" || this.state.password === "" || this.state.confirmPassword === "") {
+    if (
+      this.state.username === "" ||
+      this.state.email === "" ||
+      this.state.password === "" ||
+      this.state.confirmPassword === ""
+    ) {
       toast.error("Ati lasat campuri necompletate");
       return;
     }
@@ -48,13 +54,13 @@ class SignUp extends Component {
       return;
     }
 
-    if(!this.state.email.includes('@') || !this.state.email.includes('.')) {
+    if (!this.state.email.includes("@") || !this.state.email.includes(".")) {
       toast.error("Email-ul nu are format corespunzător");
       return;
     }
 
     let toSend = {
-      username: this.state.email,
+      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     };
@@ -115,6 +121,20 @@ class SignUp extends Component {
                 </p>
                 <div className="sign-up-form-container">
                   <InputGroup className="group-input">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text id="basic-addon1">
+                        <AiTwotoneMail />
+                      </InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                      type="text"
+                      placeholder="Nume complet"
+                      aria-label="username"
+                      aria-describedby="basic-addon1"
+                      onChange={this.handleChange}
+                    />
+                  </InputGroup>
+                  <InputGroup className="group-input mt-3">
                     <InputGroup.Prepend>
                       <InputGroup.Text id="basic-addon1">
                         <AiTwotoneMail />

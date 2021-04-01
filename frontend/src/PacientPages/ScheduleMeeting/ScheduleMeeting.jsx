@@ -4,7 +4,7 @@ import "./ScheduleMeeting.scss";
 import ChooseDoctorModal from "./ChooseDoctorModal/ChooseDoctorModal";
 import axios from "axios";
 import { modalDate } from "../../utils/formatDate";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 class ScheduleMeeting extends Component {
   constructor(props) {
@@ -14,10 +14,11 @@ class ScheduleMeeting extends Component {
       schedule: [],
       newSchedule: "",
       showApointments: false,
+      doctors: [],
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     let finishedApointments = [];
 
     this.props.apointments.map((el) => {
@@ -25,6 +26,24 @@ class ScheduleMeeting extends Component {
     });
 
     this.setState({ schedule: finishedApointments });
+
+    try {
+      let doctors = await axios.get(
+        "http://localhost:1337/users?_where[role.type]=doctor",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+        }
+      );
+
+      this.setState({
+        doctors: doctors.data,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   handleChange = (newSchedule) => {
@@ -69,8 +88,24 @@ class ScheduleMeeting extends Component {
 
   render() {
     let toRender = null;
-    toRender = this.state.schedule.map((el) => {
-      return <p>{modalDate(el)}</p>;
+
+    toRender = this.props.apointments.map((el, index) => {
+      return (
+        <Card className="my-3" key={index}>
+          <Card.Body>
+            <Card.Title className="font-nunito-regular">
+              {" "}
+              Data și ora: {modalDate(el.date)}{" "}
+            </Card.Title>
+            <Card.Subtitle className="font-nunito-light">
+              Numele doctorului:{" "}
+              {this.state.doctors.map((doc) => {
+                if (el.doctor === doc.id) return doc.username;
+              })}
+            </Card.Subtitle>
+          </Card.Body>
+        </Card>
+      );
     });
 
     return (

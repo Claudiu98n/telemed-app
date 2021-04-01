@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import ScheduleSelector from "react-schedule-selector";
 import "./DoctorApointments.scss";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { modalDate } from "../../utils/formatDate";
+import axios from "axios";
 
 class DoctorApointments extends Component {
   constructor() {
@@ -10,10 +11,11 @@ class DoctorApointments extends Component {
     this.state = {
       schedule: [],
       showApointments: false,
+      pacients: [],
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     let finishedApointments = [];
 
     this.props.apointments.map((el) => {
@@ -21,6 +23,24 @@ class DoctorApointments extends Component {
     });
 
     this.setState({ schedule: finishedApointments });
+
+    try {
+      let pacients = await axios.get(
+        "http://localhost:1337/users?_where[role.type]=pacient",
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("jwt"),
+          },
+        }
+      );
+
+      this.setState({
+        pacients: pacients.data,
+        loading: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   handleChange = (newSchedule) => {
@@ -38,12 +58,38 @@ class DoctorApointments extends Component {
     });
   };
 
-  render() {
-    console.log(this.props.apointments);
+  deleteApointment = async (id) => {
+    console.log(id);
 
+    let response = await axios.delete(
+      `http://localhost:1337/apointments/${id}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    );
+
+    console.log(response.data);
+  }
+
+  render() {
     let toRender = null;
-    toRender = this.state.schedule.map((el) => {
-      return <p>{modalDate(el)}</p>;
+    toRender = this.props.apointments.map((el) => {
+      return (
+        <Card className="my-3">
+          <Card.Body>
+            <Card.Title className="font-nunito-regular"> Data și ora: {modalDate(el.date)} </Card.Title>
+            <Card.Subtitle className="font-nunito-light">
+              Numele pacientului:{" "}
+              {this.state.pacients.map((pac) => {
+                if (el.users_permissions_user === pac.id) return pac.username;
+              })}
+            </Card.Subtitle>
+            <Card.Link onClick={() => this.deleteApointment(el.id)} style={{color: '#962DAF'}} href="#">Marchează ca efectuată</Card.Link>
+          </Card.Body>
+        </Card>
+      );
     });
 
     return (

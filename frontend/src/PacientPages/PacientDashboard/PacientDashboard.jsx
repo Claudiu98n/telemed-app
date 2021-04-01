@@ -26,7 +26,7 @@ class PacientDashboard extends Component {
       highlightMedicationIcon: false,
       highlightMedicalRecords: false,
       highlightPacientHomepage: true,
-      user: {}
+      user: {},
     };
   }
 
@@ -142,6 +142,7 @@ class PacientDashboard extends Component {
     if (this.state.selectedPage === "PacientProfile")
       toRender = (
         <PacientProfile
+          username={this.state.user.username}
           email={this.state.user.email}
           date={this.state.user.created_at}
         />
