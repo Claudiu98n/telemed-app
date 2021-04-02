@@ -13,7 +13,7 @@
   "attributes": {
     "medicament": {
       "type": "string",
-      "unique": true,
+      "unique": false,
       "required": true,
       "minLength": 2
     },

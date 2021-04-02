@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MedicalRecordImage from "../../Assets/Svg/medrec.png";
 import { modalDate } from "../../utils/formatDate";
+import { withRouter } from 'react-router-dom';
 import {
   Card,
   ListGroup,
@@ -12,8 +13,6 @@ import {
 import "./MedicalRecords.scss";
 
 class MedicalRecords extends Component {
-  generatePDF = () => {};
-
   render() {
     console.log(this.props);
 
@@ -54,7 +53,7 @@ class MedicalRecords extends Component {
                   <Button
                     variant="primary"
                     className="btn-primary"
-                    onClick={this.generatePDF}
+                    onClick={() => {this.props.history.push(`/generează-pdf/${el.id}`)}}
                   >
                     Generează PDF
                   </Button>
@@ -82,4 +81,4 @@ class MedicalRecords extends Component {
   }
 }
 
-export default MedicalRecords;
+export default withRouter(MedicalRecords);

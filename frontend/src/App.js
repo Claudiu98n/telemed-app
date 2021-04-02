@@ -17,6 +17,7 @@ const ResetPassword = lazy(() => import("./Onboarding/ResetPassword/ResetPasswor
 const SelectType = lazy(() => import("./Onboarding/SelectType/SelectType"));
 const DoctorDashboard = lazy(() => import("./DoctorPages/DoctorDashboard/DoctorDashboard"));
 const PacientDashboard = lazy(() => import("./PacientPages/PacientDashboard/PacientDashboard"));
+const Pdf = lazy(() => import("./PacientPages/GeneratePdf/Pdf"));
 
 class App extends Component {
   render() {
@@ -50,6 +51,7 @@ class App extends Component {
               <Route path="/verificare-suplimentara" exact component={VerifyDoctor} />
               <Route path="/doctor-dashboard" exact component={DoctorDashboard} />
               <Route path="/pacient-dashboard" exact component={PacientDashboard} />
+              <Route path="/generează-pdf/:id" exact component={Pdf} />
             </Switch>
           </Suspense>
         </Router>
