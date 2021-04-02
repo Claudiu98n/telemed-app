@@ -24,7 +24,7 @@ class EditPacientsModal extends Component {
     let toRender = null;
     switch (this.state.active) {
       case "medicalRecords":
-        toRender = <EditPacientsMedicalRecords />;
+        toRender = <EditPacientsMedicalRecords activePacient={this.props.activePacient}/>;
         break;
       case "medication":
         toRender = <EditPacientsMedication activePacient={this.props.activePacient}/>;

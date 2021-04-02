@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_medrec_medrecs",
+  "info": {
+    "name": "medrec",
+    "icon": "address-card"
+  },
+  "options": {},
+  "attributes": {
+    "category": {
+      "type": "string",
+      "required": true
+    },
+    "affection": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -138,7 +138,9 @@ class PacientDashboard extends Component {
     if (this.state.selectedPage === "ScheduleMeeting")
       toRender = <ScheduleMeeting apointments={this.state.user.apointments} />;
     if (this.state.selectedPage === "MedicalRecords")
-      toRender = <MedicalRecords />;
+      toRender = (
+        <MedicalRecords medicalRecords={this.state.user.medical_records} />
+      );
     if (this.state.selectedPage === "Medication")
       toRender = <Medication medications={this.state.user.medications} />;
     if (this.state.selectedPage === "PacientProfile")

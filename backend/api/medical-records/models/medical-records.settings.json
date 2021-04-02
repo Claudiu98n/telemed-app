@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medical_records",
+  "info": {
+    "name": "medical-records",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "medrec": {
+      "type": "component",
+      "repeatable": true,
+      "component": "medrec.medrec"
+    },
+    "pacient": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "medical_records"
+    }
+  }
+}

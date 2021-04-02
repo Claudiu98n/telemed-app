@@ -23,7 +23,6 @@ module.exports = {
         .findOne({id: id})
 
         // console.log('user');
-        console.log(user);
 
         return {
             email: user.email,
@@ -32,7 +31,8 @@ module.exports = {
             apointments: user.apointments, 
             apoints: user.apoints, 
             created_at: user.created_at,
-            medications: user.medications
+            medications: user.medications,
+            medical_records: user.medical_records
         };
     },
 

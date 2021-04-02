@@ -10,7 +10,7 @@ class Header extends Component {
   render() {
     return (
       <header id='header' className='container-fluid'>
-        <div className='header-container'>
+        <div className='content-container'>
         <Row className='align-items-center'>
           <Col  className='d-flex justify-content-start'>
             <GiHamburgerMenu 

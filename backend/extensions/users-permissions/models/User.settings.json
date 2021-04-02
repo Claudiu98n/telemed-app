@@ -70,6 +70,10 @@
     "medications": {
       "via": "pacient",
       "collection": "medication"
+    },
+    "medical_records": {
+      "via": "pacient",
+      "collection": "medical-records"
     }
   }
 }
