@@ -116,9 +116,17 @@ class DoctorDashboard extends Component {
   };
 
   render() {
+    console.log(this.state);
     if (this.state.loading === true) return <p> Se incarca... </p>;
     let toRender = null;
-    if (this.state.selectedPage === "Meeting") toRender = <DoctorMeeting />;
+    if (this.state.selectedPage === "Meeting")
+      toRender = (
+        <DoctorMeeting
+          userId={this.state.user.id}
+          apoints={this.state.user.apoints}
+          username={this.state.user.username}
+        />
+      );
     if (this.state.selectedPage === "PacientsList")
       toRender = <DoctorPacientsList />;
     if (this.state.selectedPage === "DoctorHomePage")
