@@ -19,6 +19,7 @@ class DoctorMeeting extends Component {
       call: false,
       nextMeeting: {},
       pacients: [],
+      now: ''
     };
   }
 
@@ -53,6 +54,8 @@ class DoctorMeeting extends Component {
 
     let dateNow = Date.now();
     let now = new Date(dateNow);
+    now.setHours( now.getHours() - 1 );
+    console.log('now', now)
     let greaterDates = this.props.apoints.filter(
       (el) => el.date > now.toISOString()
     );
@@ -66,6 +69,7 @@ class DoctorMeeting extends Component {
     });
 
     this.setState({
+      now: now,
       nextMeeting: greaterDates[0],
     });
   };
@@ -109,6 +113,7 @@ class DoctorMeeting extends Component {
                     variant="primary"
                     className="btn-primary"
                     onClick={this.handleClick}
+                    // disabled={}
                   >
                     Generează conferința
                   </Button>

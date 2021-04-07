@@ -33,7 +33,7 @@ class Medication extends Component {
       });
     } else {
       toRender = (
-        <p className="w-100 d-flex justify-content-center">
+        <p style={{position: 'absolute', left: '50%', transform: 'translateX(-50%)'}}>
           Nu aveți medicație.
         </p>
       );
