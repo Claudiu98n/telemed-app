@@ -5,6 +5,7 @@ import ChooseDoctorModal from "./ChooseDoctorModal/ChooseDoctorModal";
 import axios from "axios";
 import { modalDate } from "../../utils/formatDate";
 import { Button, Card } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 class ScheduleMeeting extends Component {
   constructor(props) {
@@ -84,12 +85,17 @@ class ScheduleMeeting extends Component {
     );
 
     console.log(response.data);
+    if(response.data.semafor === false) {
+      toast.error(`Doctorul ${response.data.doctorName} are deja o programare activă la această oră 👨‍⚕️`);
+    } else {
+      toast.success(`Programare realizată cu succes la Doctorul ${response.data.doctorName} 👨‍⚕️`)
+    }
   };
 
   render() {
     let toRender = null;
 
-    toRender = this.props.apointments.map((el, index) => {
+    toRender = this.props.apointments?.map((el, index) => {
       return (
         <Card className="my-3" key={index}>
           <Card.Body>

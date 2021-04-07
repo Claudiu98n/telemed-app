@@ -12,7 +12,8 @@
   },
   "attributes": {
     "date": {
-      "type": "datetime"
+      "type": "datetime",
+      "unique": false
     },
     "users_permissions_user": {
       "plugin": "users-permissions",

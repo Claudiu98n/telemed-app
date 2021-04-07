@@ -40,14 +40,32 @@ module.exports = {
         let userInfo = await strapi.services['apointments'].identifyUser(ctx);
         console.log(userInfo);
 
-        const user = await strapi 
-        .query('apointments')
-        .create({
-            users_permissions_user: userInfo.id, date: ctx.request.body.date,
-            doctor: ctx.request.body.doctorId, date: ctx.request.body.date
+        let doctorInfo = await strapi
+        .query('user', 'users-permissions')
+        .findOne({id: ctx.request.body.doctorId});
+
+        let semafor = true;
+        doctorInfo.apoints.forEach(el => {
+            if(el.date === ctx.request.body.date) {
+                semafor = false;
+            }
         })
 
-        return true;
+        if (semafor === true) {
+            const user = await strapi 
+            .query('apointments')
+            .create({
+                users_permissions_user: userInfo.id, date: ctx.request.body.date,
+                doctor: ctx.request.body.doctorId, date: ctx.request.body.date
+            })
+        }
+
+        let apointResponse = {
+            semafor: semafor,
+            doctorName: doctorInfo.username
+        };
+
+        return apointResponse;
     }
 
 };
