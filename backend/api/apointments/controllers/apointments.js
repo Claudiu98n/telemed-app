@@ -17,4 +17,9 @@ module.exports = {
         return newApointment;
     },
 
+    async generateVideo(ctx) {
+        let newVideo = await strapi.services['apointments'].generateVideo(ctx);
+        return newVideo;
+    },
+
 };

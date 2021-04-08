@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "POST",
+      "path": "/generateVideo",
+      "handler": "apointments.generateVideo",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
       "path": "/createApointment",
       "handler": "apointments.createApointment",
       "config": {

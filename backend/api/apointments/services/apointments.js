@@ -66,6 +66,29 @@ module.exports = {
         };
 
         return apointResponse;
+    },
+
+    async generateVideo(ctx) {
+        let userInfo = await strapi.services['apointments'].identifyUser(ctx);
+        console.log(userInfo);
+
+        console.log('BODY BODY');
+        console.log(ctx.request.body.generated);
+        console.log(ctx.request.body.meetingId);
+
+        // let meeting = await strapi
+        // .query('apointments')
+        // .findOne({id: ctx.request.body.meetingId});
+        // console.log(meeting);
+
+        let generateMeeting =  await strapi
+        .query('apointments')
+        .update(
+            {id: ctx.request.body.meetingId},
+            {generated: ctx.request.body.generated}
+        );
+
+        return true;
     }
 
 };

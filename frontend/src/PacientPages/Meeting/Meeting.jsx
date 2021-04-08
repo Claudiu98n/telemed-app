@@ -110,6 +110,7 @@ class Meeting extends Component {
                 </ListGroupItem>
                 <ListGroupItem>
                   <Button
+                    disabled={!this.state.nextMeeting.generated}
                     variant="primary"
                     className="btn-primary"
                     onClick={this.handleClick}

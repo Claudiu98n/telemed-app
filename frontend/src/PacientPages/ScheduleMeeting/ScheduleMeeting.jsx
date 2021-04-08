@@ -22,7 +22,7 @@ class ScheduleMeeting extends Component {
   componentDidMount = async () => {
     let finishedApointments = [];
 
-    this.props.apointments.map((el) => {
+    this.props.apointments?.map((el) => {
       finishedApointments.push(el.date);
     });
 

@@ -23,7 +23,7 @@ class DoctorMeeting extends Component {
     };
   }
 
-  handleClick = (event) => {
+  handleClick = async (event) => {
     event.preventDefault();
     let roomName = `meeting-telemed-${this.state.nextMeeting.id}`;
     this.setState({
@@ -31,6 +31,21 @@ class DoctorMeeting extends Component {
       name: this.props.username,
       call: true,
     });
+
+    let response = await axios.post(
+      "http://localhost:1337/generateVideo",
+      {
+        generated: true,
+        meetingId: this.state.nextMeeting.id,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      }
+    );
+
+    console.log(response.data);
   };
 
   componentDidMount = async () => {
