@@ -24,6 +24,9 @@
       "plugin": "users-permissions",
       "model": "user",
       "via": "apoints"
+    },
+    "generated": {
+      "type": "boolean"
     }
   }
 }
