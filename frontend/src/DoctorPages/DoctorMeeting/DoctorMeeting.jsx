@@ -19,7 +19,7 @@ class DoctorMeeting extends Component {
       call: false,
       nextMeeting: {},
       pacients: [],
-      now: ''
+      now: "",
     };
   }
 
@@ -54,8 +54,8 @@ class DoctorMeeting extends Component {
 
     let dateNow = Date.now();
     let now = new Date(dateNow);
-    now.setHours( now.getHours() - 1 );
-    console.log('now', now)
+    now.setHours(now.getHours() - 1);
+    console.log("now", now);
     let greaterDates = this.props.apoints.filter(
       (el) => el.date > now.toISOString()
     );
@@ -85,11 +85,11 @@ class DoctorMeeting extends Component {
               roomName={this.state.room}
               displayName={this.state.name}
               password={this.state.password}
-              onMeetingEnd={() => this.setState({call: false})}
+              onMeetingEnd={() => this.setState({ call: false })}
               loadingComponent={<p>Se încarcă ...</p>}
               errorComponent={<p>Oops, a apărut o eroare.</p>}
             />
-          ) : (
+          ) : this.state.nextMeeting ? (
             <Card style={{ width: "23rem" }}>
               <Card.Img variant="top" src={DoctorMeetingImage} />
               <Card.Body>
@@ -113,12 +113,18 @@ class DoctorMeeting extends Component {
                     variant="primary"
                     className="btn-primary"
                     onClick={this.handleClick}
-                    // disabled={}
                   >
                     Generează conferința
                   </Button>
                 </ListGroupItem>
               </ListGroup>
+            </Card>
+          ) : (
+            <Card style={{ width: "23rem" }}>
+              <Card.Img variant="top" src={DoctorMeetingImage} />
+              <Card.Title className="text-center">
+                Nu aveți incă programări
+              </Card.Title>
             </Card>
           )}
         </div>
