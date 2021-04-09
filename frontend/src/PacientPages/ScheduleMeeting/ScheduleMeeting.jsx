@@ -48,7 +48,10 @@ class ScheduleMeeting extends Component {
   };
 
   handleChange = (newSchedule) => {
-    if (newSchedule.length > 0) {
+    let dateNow = Date.now();
+    let now = new Date(dateNow);
+    let toCompare = new Date(newSchedule[newSchedule.length - 1]);
+    if (newSchedule.length > 0 && toCompare > now) {
       if (!this.state.schedule.includes(newSchedule[newSchedule.length - 1])) {
         this.setState({
           show: true,
@@ -85,10 +88,14 @@ class ScheduleMeeting extends Component {
     );
 
     console.log(response.data);
-    if(response.data.semafor === false) {
-      toast.error(`Doctorul ${response.data.doctorName} are deja o programare activă la această oră 👨‍⚕️`);
+    if (response.data.semafor === false) {
+      toast.error(
+        `Doctorul ${response.data.doctorName} are deja o programare activă la această oră 👨‍⚕️`
+      );
     } else {
-      toast.success(`Programare realizată cu succes la Doctorul ${response.data.doctorName} 👨‍⚕️`)
+      toast.success(
+        `Programare realizată cu succes la Doctorul ${response.data.doctorName} 👨‍⚕️`
+      );
     }
   };
 
