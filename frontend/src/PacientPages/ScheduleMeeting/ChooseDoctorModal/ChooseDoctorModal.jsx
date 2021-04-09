@@ -15,7 +15,7 @@ class ChooseDoctorModal extends Component {
     this.state = {
       doctors: [],
       chosenDoctor: "",
-      loading: true
+      loading: true,
     };
   }
 
@@ -38,9 +38,9 @@ class ChooseDoctorModal extends Component {
       console.log(e);
     }
 
-    if(this.state.loading === false ) {
+    if (this.state.loading === false) {
       this.setState({
-        chosenDoctor: this.state.doctors[0].username
+        chosenDoctor: this.state.doctors[0]?.username,
       });
     }
   };
@@ -52,10 +52,12 @@ class ChooseDoctorModal extends Component {
   };
 
   handleConfirm = () => {
-    let doctorId = this.state.doctors.filter(
-      (el) => el.username === this.state.chosenDoctor
-    )[0].id;
-    this.props.makeApointment(this.props.newSchedule, doctorId);
+    if (this.state.doctors.length > 0) {
+      let doctorId = this.state.doctors.filter(
+        (el) => el.username === this.state.chosenDoctor
+      )[0].id;
+      this.props.makeApointment(this.props.newSchedule, doctorId);
+    }
     this.props.onHide();
   };
 
