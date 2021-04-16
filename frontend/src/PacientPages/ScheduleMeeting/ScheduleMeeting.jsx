@@ -19,6 +19,18 @@ class ScheduleMeeting extends Component {
     };
   }
 
+  componentWillReceiveProps = async (nextProps) => {
+    console.log('nextprops', nextProps.apointments);
+    console.log('actual', this.props.apointments)
+    if(nextProps.apointments !== this.props.apointments) {
+      let newSchedule = [];
+      nextProps.apointments.forEach(el => newSchedule.push(el.date));
+      this.setState({
+        schedule: newSchedule
+      });
+    }
+  }
+
   componentDidMount = async () => {
     let finishedApointments = [];
 
@@ -96,10 +108,13 @@ class ScheduleMeeting extends Component {
       toast.success(
         `Programare realizată cu succes la Doctorul ${response.data.doctorName} 👨‍⚕️`
       );
+      this.props.refresh();
     }
   };
 
   render() {
+    console.log('state', this.state.schedule);
+    console.log('props', this.props);
     let toRender = null;
 
     toRender = this.props.apointments?.map((el, index) => {
@@ -157,6 +172,7 @@ class ScheduleMeeting extends Component {
           </div>
         )}
         <ChooseDoctorModal
+          refresh={this.props.refresh}
           newSchedule={this.state.newSchedule}
           show={this.state.show}
           onHide={this.closeModal}

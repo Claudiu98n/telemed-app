@@ -15,6 +15,18 @@ class DoctorApointments extends Component {
     };
   }
 
+  componentWillReceiveProps = async (nextProps) => {
+    console.log('nextprops', nextProps.apointments);
+    console.log('actual', this.props.apointments)
+    if(nextProps.apointments !== this.props.apointments) {
+      let newSchedule = [];
+      nextProps.apointments.forEach(el => newSchedule.push(el.date));
+      this.setState({
+        schedule: newSchedule
+      });
+    }
+  }
+
   componentDidMount = async () => {
     let finishedApointments = [];
 
@@ -70,6 +82,7 @@ class DoctorApointments extends Component {
       }
     );
 
+    this.props.refresh();
     console.log(response.data);
   }
 

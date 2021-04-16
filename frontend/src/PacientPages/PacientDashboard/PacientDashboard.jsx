@@ -131,6 +131,24 @@ class PacientDashboard extends Component {
     }
   };
 
+  refreshContent = async () => {
+    try {
+      let userInfo = await axios.get("http://localhost:1337/identifyUser", {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("jwt"),
+        },
+      });
+
+      this.setState({
+        user: userInfo.data,
+        loading: false,
+        refresh: Math.random(),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   render() {
     console.log(this.state.user);
     let toRender = null;
@@ -142,7 +160,12 @@ class PacientDashboard extends Component {
         />
       );
     if (this.state.selectedPage === "ScheduleMeeting")
-      toRender = <ScheduleMeeting apointments={this.state.user.apointments} />;
+      toRender = (
+        <ScheduleMeeting
+          apointments={this.state.user.apointments}
+          refresh={this.refreshContent}
+        />
+      );
     if (this.state.selectedPage === "MedicalRecords")
       toRender = (
         <MedicalRecords medicalRecords={this.state.user.medical_records} />
