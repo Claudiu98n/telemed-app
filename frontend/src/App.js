@@ -10,6 +10,7 @@ import "./App.scss";
 
 // import Error404 from "./Pages/error404/Error404";
 import VerifyDoctor from "./Onboarding/VerifyDoctor/VerifyDoctor";
+import Error404 from "./Error404/Error404";
 
 const SignIn = lazy(() => import("./Onboarding/SignIn/SignIn"));
 const SignUp = lazy(() => import("./Onboarding/SignUp/SignUp"));
@@ -52,6 +53,7 @@ class App extends Component {
               <Route path="/doctor-dashboard" exact component={DoctorDashboard} />
               <Route path="/pacient-dashboard" exact component={PacientDashboard} />
               <Route path="/generează-pdf/:id" exact component={Pdf} />
+              <Route path="*" exact component={Error404} />
             </Switch>
           </Suspense>
         </Router>
