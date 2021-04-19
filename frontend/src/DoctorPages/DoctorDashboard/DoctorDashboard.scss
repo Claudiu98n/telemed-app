@@ -1,6 +1,6 @@
 .doctor-dashboard {
     .to-render-pages {
-        margin-top: 2rem;
-        min-height: 90vh;
+        min-height: calc(100vh - 5rem);
+        margin-top: 5rem;
      }
 }

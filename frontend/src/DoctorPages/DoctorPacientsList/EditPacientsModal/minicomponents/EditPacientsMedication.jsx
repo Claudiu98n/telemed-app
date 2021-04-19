@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormControl, Form, Button } from "react-bootstrap";
+import { FormControl, Form, Button, ToastHeader } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -31,7 +31,7 @@ class EditPacientsMedication extends Component {
         "http://localhost:1337/createMedication",
         {
           medicament: this.state.medicament,
-          hour: this.state.hour+":00",
+          hour: this.state.hour + ":00",
           start: this.state.startDate,
           end: this.state.endDate,
           pacientId: pacientId
@@ -43,6 +43,9 @@ class EditPacientsMedication extends Component {
         }
       );
 
+      if (response.data === true) {
+        return toast.success(`Ați adăugat cu succes medicație pentru pacientul ${this.props.activePacient.username} 💊`);
+      }
       console.log(response.data);
     }
   };

@@ -3,3 +3,11 @@
         max-width: 400px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .pacient-profile-page {
+        .card-profile {
+            margin-top: 1.5rem !important;
+        }
+    }
+}

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { FormControl, Form, Button } from "react-bootstrap";
 import { BsPlusCircle } from "react-icons/bs";
 import axios from "axios";
+import { toast } from "react-toastify"; 
 
 class EditPacientMedicalRecords extends Component {
   constructor() {
@@ -47,6 +48,9 @@ class EditPacientMedicalRecords extends Component {
       }
     );
 
+    if (response.data === true) {
+      return toast.success(`Ați adăugat cu succes fisă medicală pentru pacientul ${this.props.activePacient.username} 📋`);
+    }
     console.log(response.data);
   };
 
