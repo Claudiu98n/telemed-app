@@ -115,7 +115,7 @@ class SignUp extends Component {
               <div className="left-side-sign-up w-50 d-flex justify-content-center align-items-center">
                 <LeftSideImage className="left-side-image" />
               </div>
-              <div className="right-side-sign-up w-50 p-5 p-md-4 d-flex flex-column justify-content-center align-items-center">
+              <div className="right-side-sign-up w-50 p-3 p-md-3 d-flex flex-column justify-content-center align-items-center">
                 <p className="font-nunito-bold font-color-white font-size-40">
                   Creează un cont!
                 </p>

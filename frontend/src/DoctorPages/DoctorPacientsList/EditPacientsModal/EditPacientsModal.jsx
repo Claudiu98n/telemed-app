@@ -7,6 +7,7 @@ import { Modal, Nav } from "react-bootstrap";
 // components
 import EditPacientsMedication from "./minicomponents/EditPacientsMedication";
 import EditPacientsMedicalRecords from "./minicomponents/EditPacientMedicalRecords";
+import EditPacientsHistory from "./minicomponents/EditPacientsHistory";
 
 class EditPacientsModal extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class EditPacientsModal extends Component {
         break;
       case "medication":
         toRender = <EditPacientsMedication activePacient={this.props.activePacient}/>;
+        break;
+      case "history":
+        toRender = <EditPacientsHistory activePacient={this.props.activePacient}/>;
         break;
       default:
         return null;
@@ -59,6 +63,9 @@ class EditPacientsModal extends Component {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link eventKey="medicalRecords">Fișă medicală</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link eventKey="history">Istoric</Nav.Link>
             </Nav.Item>
           </Nav>
           {toRender}

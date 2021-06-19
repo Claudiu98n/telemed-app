@@ -79,7 +79,7 @@ class SignIn extends Component {
               <div className="left-side-sign-in w-50 d-flex justify-content-center align-items-center">
                 <LeftSideImage className="left-side-image" />
               </div>
-              <div className="right-side-sign-in w-50 p-5 d-flex flex-column justify-content-center align-items-center">
+              <div className="right-side-sign-in w-50 p-3 d-flex flex-column justify-content-center align-items-center">
                 <p className="font-nunito-bold font-color-white font-size-40">
                   Bine ai venit!
                 </p>

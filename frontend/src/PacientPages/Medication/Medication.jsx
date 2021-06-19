@@ -11,7 +11,7 @@ class Medication extends Component {
     if (this.props.medications.length > 0) {
       toRender = this.props.medications.map((el, index) => {
         return (
-          <Col className="mb-3 d-flex justify-content-center">
+          <Col key={index} className="mb-3 d-flex justify-content-center">
             <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src={MedicationImage} />
               <Card.Body>
