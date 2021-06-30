@@ -37,21 +37,20 @@ module.exports = {
     },
 
     async createApointment(ctx) {
-        let userInfo = await strapi.services['apointments'].identifyUser(ctx);
-        console.log(userInfo);
+        const userInfo = await strapi.services['apointments'].identifyUser(ctx);
 
-        let doctorInfo = await strapi
+        const doctorInfo = await strapi
         .query('user', 'users-permissions')
         .findOne({id: ctx.request.body.doctorId});
 
-        let semafor = true;
+        let flag = true;
         doctorInfo.apoints.forEach(el => {
             if(el.date === ctx.request.body.date) {
-                semafor = false;
+                flag = false;
             }
         })
 
-        if (semafor === true) {
+        if (flag === true) {
             const user = await strapi 
             .query('apointments')
             .create({
@@ -61,7 +60,7 @@ module.exports = {
         }
 
         let apointResponse = {
-            semafor: semafor,
+            flag,
             doctorName: doctorInfo.username
         };
 

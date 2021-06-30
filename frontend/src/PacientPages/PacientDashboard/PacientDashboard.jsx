@@ -115,20 +115,9 @@ class PacientDashboard extends Component {
       this.props.history.push("/");
     }
 
-    try {
-      let userInfo = await axios.get("http://localhost:1337/identifyUser", {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("jwt"),
-        },
-      });
+    this.refreshContent();
 
-      this.setState({
-        user: userInfo.data,
-        loading: false,
-      });
-    } catch (e) {
-      console.log(e);
-    }
+    setInterval(this.refreshContent, 10000); 
   };
 
   refreshContent = async () => {

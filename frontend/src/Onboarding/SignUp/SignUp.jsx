@@ -59,6 +59,11 @@ class SignUp extends Component {
       return;
     }
 
+    if(this.state.password.length < 8) {
+      toast.error("Parola trebuie să conțină mai mult de 8 caractere")
+      return;
+    }
+
     let toSend = {
       username: this.state.username,
       email: this.state.email,
